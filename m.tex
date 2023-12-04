@@ -1,0 +1,2037 @@
+
+\documentclass[12pt]{article}
+\usepackage{amsfonts}
+\usepackage{textalpha} % Enable Greek text
+
+\usepackage{bm}
+\usepackage{enumerate} 
+\usepackage{amssymb,amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{accents} 
+
+\usepackage{dsfont}
+
+\usepackage{stackengine}
+
+\usepackage{accents} 
+
+%\let\Horig\H
+
+\usepackage{tikz}
+\usetikzlibrary{automata,topaths}
+\usetikzlibrary{shapes}
+\usetikzlibrary{plotmarks}
+ 
+% \usepackage{wasysym} 
+\usepackage{float} 
+\usepackage{textcomp} 
+\usepackage{siunitx}
+\sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
+
+\usepackage{color} 
+\definecolor{lightblue}{rgb}{0,0.2,0.5}
+\usepackage[colorlinks=true, urlcolor=lightblue,linkcolor=lightblue, citecolor=lightblue]{hyperref}
+\usepackage{ucs}
+%% For typesetting code listings                                                
+
+% \usepackage{listings}
+\usepackage{listingsutf8}
+\lstdefinelanguage{Sage}[]{Python}
+{morekeywords={False,sage,True},sensitive=true}
+
+\lstset{
+ mathescape = false,
+ escapechar = {$},
+ basicstyle = \ttfamily,
+ extendedchars=false,
+ inputencoding=utf8,
+%  frame=none,
+%  showtabs=False,
+%  showspaces=False,
+%  showstringspaces=False,
+  commentstyle={\ttfamily\color{dgreencolor}},
+  keywordstyle={\ttfamily\color{dbluecolor}\bfseries},
+  stringstyle={\ttfamily\color{dgraycolor}\bfseries},
+  language=Sage,
+  basicstyle={\fontsize{10pt}{10pt}\ttfamily},
+  aboveskip=0.3em,
+  belowskip=0.1em,
+  numbers=none, % left,
+  numberstyle=\footnotesize,
+  breaklines=true,                % sets automatic line breaking 
+}
+
+\definecolor{dblackcolor}{rgb}{0.0,0.0,0.0}
+\definecolor{dbluecolor}{rgb}{0.01,0.02,0.7}
+\definecolor{dgreencolor}{rgb}{0.2,0.4,0.0}
+\definecolor{dgraycolor}{rgb}{0.30,0.3,0.30}
+\newcommand{\dblue}{\color{dbluecolor}\bf}
+\newcommand{\dred}{\color{dredcolor}\bf}
+\newcommand{\dblack}{\color{dblackcolor}\bf}
+
+\usepackage{graphicx}
+\usepackage{flushend,cuted}
+\usepackage{bm}
+\usepackage{tabularx}
+%\usepackage{color}
+\usepackage{indentfirst}
+\usepackage{amssymb}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage{mdwlist}
+\usepackage{tkz-graph}
+
+\DeclareMathAlphabet{\eufrak}{U}{}{}{} 
+\SetMathAlphabet\eufrak{normal}{U}{euf}{m}{n}
+\SetMathAlphabet\eufrak{bold}{U}{euf}{b}{n}
+
+% \usepackage{eucal}
+
+% \usepackage{epsfig,latexsym}
+
+% \usepackage{graphicx,amsmath,amssymb,latexsym,psfrag}
+
+% \usepackage[polish]{babel}
+
+\newtheorem{assumption}{Assumption}[section]
+
+% \usepackage{graphics,graphicx,amsmath}
+
+\oddsidemargin=0cm \textwidth=16.5cm \textheight=23cm
+\topmargin=-1.5cm
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\IP}{\mathbb{P}}
+%\newcommand{\bone}{\bone}
+\newcommand{\bone}{{\bf 1}}
+% \newcommand{\E}{\mathrm{E}}
+
+\newcommand{\supp}{\mathrm{supp}}
+
+%% \renewcommand{\le}{\leqslant}
+%% \renewcommand{\leq}{\leqslant}
+
+%% \renewcommand{\ge}{\geqslant}
+%% \renewcommand{\geq}{\geqslant}
+
+\newcommand{\conv}{\mathrm{conv}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\grad}{\mathrm{grad}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\inte}{\mathbb{N}}
+\newcommand{\bbf}{{\mathbf{f}}}
+\newcommand{\bT}{\mathbb{T}}
+\newcommand{\TP}{\widetilde{P}}
+\newcommand{\tgi}{t\rightarrow \infty}
+\newcommand{\ngi}{n\rightarrow \infty}
+\newcommand{\algi}{\alpha \rightarrow \infty}
+\newcommand{\xgi}{x\rightarrow \infty}
+\newcommand{\oJ}{\overline{J}}
+\newcommand{\og}{\overline{\gamma}}
+\newcommand{\oL}{\overline{\Lambda}}
+\newcommand{\EPSI}{\varepsilon}
+
+% To define \widebar
+\makeatletter
+\newcommand*\rel@kern[1]{\kern#1\dimexpr\macc@kerna}
+\newcommand*\widebar[1]{%
+  \begingroup
+  \def\mathaccent##1##2{%
+    \rel@kern{0.8}%
+    \overline{\rel@kern{-0.8}\macc@nucleus\rel@kern{0.2}}%
+    \rel@kern{-0.2}%
+  }%
+  \macc@depth\@ne
+  \let\math@bgroup\@empty \let\math@egroup\macc@set@skewchar
+  \mathsurround\z@ \frozen@everymath{\mathgroup\macc@group\relax}%
+  \macc@set@skewchar\relax
+  \let\mathaccentV\macc@nested@a
+  \macc@nested@a\relax111{#1}%
+  \endgroup
+}
+\makeatother
+
+\makeatletter
+\DeclareRobustCommand\widecheck[1]{{\mathpalette\@widecheck{#1}}}
+\def\@widecheck#1#2{%
+    \setbox\z@\hbox{\m@th$#1#2$}%
+    \setbox\tw@\hbox{\m@th$#1%
+       \widehat{%
+          \vrule\@width\z@\@height\ht\z@
+          \vrule\@height\z@\@width\wd\z@}$}%
+    \dp\tw@-\ht\z@
+    \@tempdima\ht\z@ \advance\@tempdima2\ht\tw@ \divide\@tempdima\thr@@
+    \setbox\tw@\hbox{%
+       \raise\@tempdima\hbox{\scalebox{1}[-1]{\lower\@tempdima\box
+\tw@}}}%
+    {\ooalign{\box\tw@ \cr \box\z@}}}
+\makeatother
+
+\newcommand{\disc}{\mathrm{disc}}
+\newcommand{\bZ}{\bold{Z}}
+\newcommand{\bz}{\bold{z}}
+\newcommand{\dtv}{{d_{\rm TV}}}
+\newcommand{\dk}{{d_{\rm K}}}
+\newcommand{\dw}{{d_{\rm W}}}
+
+
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{lemma}[prop]{Lemma}
+\newtheorem{definition}[prop]{Definition}
+\newtheorem{corollary}[prop]{Corollary}
+\newtheorem{thm}[prop]{Theorem}
+\newtheorem{remark}[prop]{Remark}
+\newtheorem{example}[prop]{Example}
+
+%\def\bone{\vmathbb{1}}
+\def\bp{\noindent{\it Proof.}\ }
+\def\ep{\hfill $\Box$}
+\newcommand{\bt}{\mathbf{t}}
+\def\({\left(}
+\def\){\right)}
+% \theoremstyle{definition}
+% \newtheorem{definition}{Definicja}[section]
+\newcommand{\cov}{\mathrm{Cov}}
+\def\[{\left[}
+\def\]{\right]}
+\def\real{{\mathord{\mathbb R}}}
+\def\N{{\mathord{\mathbb N}}}
+\def\Dom{\mathrm{Dom}}
+\def\Var{\mathrm{Var}}
+% \newcommand{\p}{\mathbb{P}}
+\newcommand{\pr}{\mathbb{P}}
+\def\P{\mathbb{P}}
+% \newcommand{\R}{\mathbb{R}}
+%\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+% \newcommand{\C}{\mathbb{C}}
+% \newcommand{\E}{\mathbb{E}}
+\newcommand{\re}{\mathbb{e}}
+
+\newenvironment{Proof}{\removelastskip\par\medskip
+\noindent{\em Proof.} \rm}{\penalty-20\null\hfill$\square$\par\medbreak}
+
+\newenvironment{Proofx}{\removelastskip\par\medskip
+\noindent{\em Proof.} \rm}{\par}
+
+\newenvironment{Proofy}{\removelastskip\par\medskip
+\noindent{\em Proof} \rm}{\penalty-20\null\hfill$\square$\par\medbreak}
+
+\allowdisplaybreaks
+
+\numberwithin{equation}{section}
+
+\usepackage{fvextra}
+
+% \usepackage{refcheck}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% for drawing pictures by tikz
+\GraphInit[vstyle = Shade]
+\usetikzlibrary[intersections,
+positioning,
+petri,
+backgrounds,
+fit,
+decorations.pathmorphing,
+arrows,
+arrows.meta,
+bending,
+calc,
+intersections,
+through,
+backgrounds,
+shapes.geometric,
+quotes,
+matrix,
+trees,
+shapes.symbols,
+graphs,
+math,
+patterns,
+external,
+scopes,
+matrix,
+lindenmayersystems,
+shapes.callouts,
+shapes.misc,
+angles,
+shapes.arrows,
+shadings]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\lst@InputCatcodes
+\def\lst@DefEC{%
+ \lst@CCECUse \lst@ProcessLetter
+  ^^80^^81^^82^^83^^84^^85^^86^^87^^88^^89^^8a^^8b^^8c^^8d^^8e^^8f%
+  ^^90^^91^^92^^93^^94^^95^^96^^97^^98^^99^^9a^^9b^^9c^^9d^^9e^^9f%
+  ^^a0^^a1^^a2^^a3^^a4^^a5^^a6^^a7^^a8^^a9^^aa^^ab^^ac^^ad^^ae^^af%
+  ^^b0^^b1^^b2^^b3^^b4^^b5^^b6^^b7^^b8^^b9^^ba^^bb^^bc^^bd^^be^^bf%
+  ^^c0^^c1^^c2^^c3^^c4^^c5^^c6^^c7^^c8^^c9^^ca^^cb^^cc^^cd^^ce^^cf%
+  ^^d0^^d1^^d2^^d3^^d4^^d5^^d6^^d7^^d8^^d9^^da^^db^^dc^^dd^^de^^df%
+  ^^e0^^e1^^e2^^e3^^e4^^e5^^e6^^e7^^e8^^e9^^ea^^eb^^ec^^ed^^ee^^ef%
+  ^^f0^^f1^^f2^^f3^^f4^^f5^^f6^^f7^^f8^^f9^^fa^^fb^^fc^^fd^^fe^^ff%
+  ^^^^03b6% <--- for ζ
+  ^^^^03b1^^^^03b2^^^^03b3%
+  ^^00}
+\lst@RestoreCatcodes
+\makeatother
+
+\begin{document}
+\title{
+\huge
+ A supplementary note for \cite{LiuPrivault}
+} 
+
+\author{
+  Qingwei Liu\footnote{\href{mailto:qingwei.liu@ntu.edu.sg}{qingwei.liu@ntu.edu.sg}}
+  \qquad
+      Nicolas Privault\footnote{
+\href{mailto:nprivault@ntu.edu.sg}{nprivault@ntu.edu.sg}
+}
+  \\
+\small
+Division of Mathematical Sciences
+\\
+\small
+School of Physical and Mathematical Sciences
+\\
+\small
+Nanyang Technological University
+\\
+\small
+21 Nanyang Link, Singapore 637371
+}
+
+\maketitle
+
+\vspace{-0.5cm}
+
+\begin{abstract} 
+This is a short note for \cite{LiuPrivault}. The notation and results considered here are supposed to be consistent and self-contained in \cite{LiuPrivault}.
+\end{abstract}
+\noindent\emph{Keywords}:~
+Random-connection model, 
+subgraph count,
+normal approximation,
+Kolmogorov distance,
+cumulant method,
+Poisson point process,
+random graphs.
+
+\noindent 
+{\em Mathematics Subject Classification:} 
+60F05, % Central limit and other weak theorems
+60D05, % Geometric probability and stochastic geometry
+05C80, % Random graphs (graph-theoretic aspects)
+60G55. % Point processes (e.g., Poisson, Cox, Hawkes processes)
+% 60G57	Random measures
+%60B10. % Convergence of probability measures
+ 
+\baselineskip0.7cm
+
+\section{Preliminaries and notations}
+\noindent
+Let $\Xi$ be a Poisson point process on $\R^d$, $d\geq 1$, with intensity measure $\Lambda_\lambda$, where $\lambda > 0$. The random-connection model (RCM) built on $\Xi$, denoted by $G_{H_\lambda}(\Xi )$, is a random graph in which any two distinct vertices $x,y\in\eta$ are independently connected by an edge with a probability $H(x,y)$ that depends only on the locations of $x$ and $y$, where $H:\R^d\times \R^d\to[0,1]$ is a symmetric measurable connection function. 
+\subsection*{Graph theory}
+\noindent
+In what follows, given any two graphs $G_1,G_2$
+we write $G_1\simeq G_2$ when $G_1$ is isomorphic to $G_2$. 
+We also let $v(H):=|V(H)|$ and $e(H):=|E(H)|$ be the number of vertices and the number of edges of a graph $H$.
+Throughout this note, $G$ is assumed to be a connected graph with $ r = v(G)$ vertices. %  and $e(G)=k$.
+We denote by 
+$$
+{\rm CNF}_G(n,r) :=\big\{ \rho_G \ : \ \rho\in\Pi_{\widehat{1}}( [n]\times [r]),
+ \ 
+ \rho\wedge\pi=\widehat{0}\big\}
+$$
+the set of connected graphs whose vertex sets are non-flat partitions of
+ $[n]\times [r]$, $n, r\geq 1$. 
+ Next, we recall some related concepts from random graph theory, see \cite{luczak,JLR}.  
+\begin{definition} \cite[pages~64-65]{JLR}
+  \begin{enumerate}[1)]
+    \item
+    A graph $G$ is balanced if 
+    \begin{equation}
+ \label{fjl3kjl} 
+\frac{e(H)}{v(H)}\le\frac{e(G)}{v(G)},
+\qquad H\subseteq G, 
+  \end{equation}
+ and strictly balanced if \eqref{fjl3kjl} 
+ holds as a strict inequality for $H\subsetneq G$. 
+\item 
+ A graph $G$ with $v(G)\ge2$ is strongly balanced % , or $K_1$-balanced
+ if 
+\begin{equation}\label{strongbaldef}
+  \frac{e(H)}{v(H)-1}\le\frac{e(G)}{v(G)-1},
+  \qquad
+  H\subseteq G, 
+\end{equation}
+and strictly strongly balanced if
+\eqref{strongbaldef} holds as a strict inequality for
+ $H\subsetneq G$. 
+ \item 
+ A graph $G$ with $v(G)\ge2$ is $K_2$-balanced
+ if 
+\begin{equation}\label{k2baldef}
+  \frac{e(H)-1}{v(H)-2}\le\frac{e(G)-1}{v(G)-2},
+  \qquad
+  H\subseteq G,~ v(H)>2,
+\end{equation}
+and strictly $K_2$-balanced if
+\eqref{k2baldef} holds as a strict inequality for
+ $H\subsetneq G$. 
+\end{enumerate}
+\end{definition}
+\begin{remark}\label{graph-example}
+ As pointed out in \cite{luczak}, strongly balanced graphs are strictly balanced. Also, trees are $K_2$-balanced but not strictly $K_2$-balanced. Cycles and complete graphs are strictly $K_2$-balanced. Moreover, every $K_2$-balanced graph except unions of disjoint edges is strongly balanced.
+\end{remark}  
+\begin{lemma}
+  \label{restrict-partition}
+  Let $n\geq 2$.
+  For any connected partition 
+  $\rho\in \Pi_{\widehat{1}}( [n]\times [r])$
+  there exists $i\in \{1,\dots,n \}$
+  such that the set partition 
+  %    \label{recur-1} \rho^{(i)}:=
+  $\{b\backslash\pi_i:b\in\rho\}$ 
+  of $\{1,\dots,i-1,i+1,\dots,n \}\times [r]$
+  is connected.
+\end{lemma}
+\begin{Proof}
+ Let $\rho\in \Pi_{\widehat{1}}( [n]\times [r])$. 
+% be a partition such that the diagram $\Gamma(\rho,\pi )$ is connected.
+ We consider the connected undirected graph
+ $\eufrak{g}$ on $[n]$ in which two vertices $i,j\in [n]$
+ are connected if and only
+ if there exists a block $b\in \rho$ such that $\pi_i \cap b \not= \emptyset$
+ and $\pi_j \cap b \not= \emptyset$,
+ see Figure~\ref{fig:diagram0-11}-$a)$ for an example with $n=5$.  
+
+\begin{figure}[H]
+\captionsetup[subfigure]{font=footnotesize}
+\centering
+\subcaptionbox{Diagram $\Gamma(\rho,\pi)$ and graph $\eufrak{g}$.}[.48\textwidth]{%
+\begin{tikzpicture}
+\draw[black, thick] (0,0) rectangle (5,6);
+
+\node[anchor=east,draw, circle, inner sep=0pt, minimum size=11pt,font=\small] at (0.7,5) {1};
+\node[anchor=east,draw, circle, inner sep=0pt, minimum size=11pt,font=\small] at (0.7,4) {2};
+\node[anchor=east,draw, circle, inner sep=0pt, minimum size=11pt,font=\small] at (0.7,3) {3};
+\node[anchor=east,draw, circle, inner sep=0pt, minimum size=11pt,font=\small] at (0.7,2) {4};
+\node[anchor=east,draw, circle, inner sep=0pt, minimum size=11pt,font=\small] at (0.7,1) {5};
+
+\node[anchor=south,font=\small] at (1,0) {1};
+\node[anchor=south,font=\small] at (2,0) {2};
+\node[anchor=south,font=\small] at (3,0) {3};
+\node[anchor=south,font=\small] at (4,0) {4};
+
+\filldraw [gray] (1,1) circle (2pt);
+\filldraw [gray] (2,1) circle (2pt);
+\filldraw [gray] (3,1) circle (2pt);
+\filldraw [gray] (4,1) circle (2pt);
+\filldraw [gray] (1,2) circle (2pt);
+\filldraw [gray] (2,2) circle (2pt);
+\filldraw [gray] (3,2) circle (2pt);
+\filldraw [gray] (4,2) circle (2pt);
+\filldraw [gray] (1,3) circle (2pt);
+\filldraw [gray] (2,3) circle (2pt);
+\filldraw [gray] (3,3) circle (2pt);
+\filldraw [gray] (4,3) circle (2pt);
+\filldraw [gray] (2,3) circle (2pt);
+\filldraw [gray] (1,4) circle (2pt);
+\filldraw [gray] (2,4) circle (2pt);
+\filldraw [gray] (3,4) circle (2pt);
+\filldraw [gray] (4,4) circle (2pt);
+\filldraw [gray] (1,5) circle (2pt);
+\filldraw [gray] (2,5) circle (2pt);
+\filldraw [gray] (3,5) circle (2pt);
+\filldraw [gray] (4,5) circle (2pt);
+
+\draw[very thick] (1,5) -- (1,4); 
+\draw[very thick] (3,5) -- (4,4);
+
+\draw[very thick] (1,2) -- (1,1);
+\draw[very thick] (2,2) -- (2,4);
+\draw[very thick] (2,1) -- (3,2) -- (4,3) -- (3,4);
+
+\draw[very thick,purple] (0.3,5) .. controls (0.2,4.5) .. (0.3,4);
+\draw[very thick,purple] (0.3,4) .. controls (0.2,3.5) .. (0.3,3);
+\draw[very thick,purple] (0.3,3) .. controls (0.2,2.5) .. (0.3,2);
+\draw[very thick,purple] (0.3,2) .. controls (0.2,1.5) .. (0.3,1);
+\draw[very thick,purple] (0.7,4) .. controls (0.85,3) .. (0.7,2);
+\draw[very thick,purple] (0.7,4) .. controls (0.95,3) .. (0.7,1);
+
+\end{tikzpicture}%
+}
+\subcaptionbox{Diagram $\Gamma(\rho,\pi)$ and spanning tree $\widebar{\eufrak{g}}$.}[.5\textwidth]{%
+\begin{tikzpicture}
+\draw[black, thick] (0,0) rectangle (5,6);
+
+\node[anchor=east,draw, circle, inner sep=0pt, minimum size=11pt, font=\small] at (0.7,5) {1};
+\node[anchor=east,draw, circle, inner sep=0pt, minimum size=11pt,font=\small] at (0.7,4) {2};
+\node[anchor=east,draw, circle, inner sep=0pt, minimum size=11pt,font=\small] at (0.7,3) {3};
+\node[anchor=east,draw, circle, inner sep=0pt, minimum size=11pt,font=\small] at (0.7,2) {4};
+\node[anchor=east,draw, circle, inner sep=0pt, minimum size=11pt,font=\small] at (0.7,1) {5};
+
+\node[anchor=south,font=\small] at (1,0) {1};
+\node[anchor=south,font=\small] at (2,0) {2};
+\node[anchor=south,font=\small] at (3,0) {3};
+\node[anchor=south,font=\small] at (4,0) {4};
+
+\filldraw [gray] (1,1) circle (2pt);
+\filldraw [gray] (2,1) circle (2pt);
+\filldraw [gray] (3,1) circle (2pt);
+% \draw [very thick] (3,1) circle (4.5pt);
+\filldraw [gray] (4,1) circle (2pt);
+% \draw [very thick] (4,1) circle (4.5pt);
+\filldraw [gray] (1,2) circle (2pt);
+\filldraw [gray] (2,2) circle (2pt);
+\filldraw [gray] (3,2) circle (2pt);
+\filldraw [gray] (4,2) circle (2pt);
+% \draw [very thick] (4,2) circle (4.5pt);
+\filldraw [gray] (1,3) circle (2pt);
+% \draw [very thick] (1,3) circle (4.5pt);
+\filldraw [gray] (2,3) circle (2pt);
+\filldraw [gray] (3,3) circle (2pt);
+% \draw [very thick] (3,3) circle (4.5pt);
+\filldraw [gray] (4,3) circle (2pt);
+\filldraw [gray] (2,3) circle (2pt);
+\filldraw [gray] (1,4) circle (2pt);
+\filldraw [gray] (2,4) circle (2pt);
+\filldraw [gray] (3,4) circle (2pt);
+\filldraw [gray] (4,4) circle (2pt);
+\filldraw [gray] (1,5) circle (2pt);
+\filldraw [gray] (2,5) circle (2pt);
+% \draw [very thick] (2,5) circle (4.5pt);
+\filldraw [gray] (3,5) circle (2pt);
+\filldraw [gray] (4,5) circle (2pt);
+% \draw [very thick] (4,5) circle (4.5pt);
+
+\draw[very thick] (1,5) -- (1,4); 
+\draw[very thick] (3,5) -- (4,4);
+
+\draw[very thick] (1,2) -- (1,1);
+\draw[very thick] (2,2) -- (2,4);
+\draw[very thick] (2,1) -- (3,2) -- (4,3) -- (3,4);
+
+\draw[very thick,blue] (0.3,5) .. controls (0.2,4.5) .. (0.3,4);
+% \draw[thick,purple] (0.3,4) .. controls (0.2,3.5) .. (0.3,3);
+\draw[very thick,blue] (0.3,3) .. controls (0.2,2.5) .. (0.3,2);
+\draw[very thick,blue] (0.3,2) .. controls (0.2,1.5) .. (0.3,1);
+\draw[very thick,blue] (0.7,4) .. controls (0.85,3) .. (0.7,2);
+% \draw[thick,purple] (0.7,4) .. controls (0.95,3) .. (0.7,1);
+
+\end{tikzpicture}%
+}
+\caption{Example of graph $\eufrak{g}$ and its spanning tree subgraph.}
+\label{fig:diagram0-11}
+\end{figure}
+
+\vspace{-.4cm}
+  
+\noindent
+By e.g. Theorem~4.2.3 in \cite{balakrishnan},
+ $\eufrak{g}$ contains a spanning
+ tree $\widebar{\eufrak{g}}$, 
+ as shown in Figure~\ref{fig:diagram0-11}-$b)$. 
+ Let $i\in [n]$ be a leaf in the tree $\widebar{\eufrak{g}}$. 
+%  (e.g. the leaf with lowest or highest index)
+ If the partition 
+ ${\rho}^{(i)}:=\{ b \setminus \pi_i \ \!  : \ \!  b\in \rho \}$
+ of $([n] \setminus \{i\} ) \times [r]$ 
+ had more than one connected component, then, for $\rho$ to be connected,
+ $\pi_i$ would have to connect to all such components, 
+ hence the vertex $i$ would be adjacent to
+ more than one vertex in $\widebar{\eufrak{g}}$,
+ which is not the case.
+\end{Proof}
+\begin{lemma}
+  \label{lma:stronglybal}
+  Let $G$ be a graph with $v(G)=r$ vertices, $r \geq 2$.
+  If $G$ is strongly balanced and connected, then for any $n\ge1$
+  we have
+  \begin{equation}
+    \label{stronglybalin}
+      \frac{e(G)}{v(G)-1}\le\frac{e(\rho_G)}{v(\rho_G)-1},
+      \qquad
+  \rho_G\in {\rm CNF}_G(n,r).
+    \end{equation}
+ \end{lemma}
+\begin{Proof}
+% We let $r=v(G)\ge2$ and $k=e(G)$.
+  The claim holds for $n=1$, as in this case ${\rm CNF}_G(1,r)$
+  contains only one graph, which is isomorphic to $G$.
+  Suppose now that \eqref{stronglybalin} holds up to the rank $n\geq 1$.
+  Let $\rho$ be a non-flat connected partition on $[n+1]\times[r]$
+  with associated graph $\rho_G\in{\rm CNF}_G(n,r)$.
+  By Lemma~\ref{restrict-partition}, up to reordering
+  of $\{1,\ldots , n+1\}$ there exists 
+  $\widebar{\rho}_G\in {\rm CNF}_G(n,r)$
+  induced by $\rho_G$ on
+     $$
+     V(\widebar{\rho}_G):=
+     \big\{
+     b\in \rho \ : \ b \cap (\pi_1\cup \cdots \cup \pi_n) \not= \emptyset
+     \big\}. 
+     $$
+ Let 
+     $\widehat{\rho}_G\in
+     {\rm CNF}_G(1,r)$
+     denote the subgraph 
+  induced by $\rho_G$ on
+     $$
+     V(\widehat{\rho}_G):=
+     \big\{
+     b\in \rho \ : \ b \cap \pi_{n+1} \not= \emptyset
+     \big\}, 
+     $$
+     with
+     $\widehat{\rho}_G \simeq G$ because $\rho$ is non-flat, 
+     and let $H:=\widebar{\rho}_G\cap \widehat{\rho}_G$.
+     Since $H\subseteq \widehat{\rho}_G$,
+     by \eqref{strongbaldef} we have 
+       \begin{align*}
+  \frac{e(H)}{v(H)-1}\le\frac{e(G)}{v(G)-1}. 
+  \end{align*} 
+ Hence, by the induction
+ hypothesis \eqref{stronglybalin} applied at the rank $n$
+ to   $\widebar{\rho}_G\in {\rm CNF}_G(n,r)$, we have 
+         \begin{align*}
+         \frac{e(\rho_G)}{v(\rho_G)-1}
+         & =
+         \frac{e(\widebar{\rho}_G)+e(\widehat{\rho}_G)-e(H)}{
+           v(\widebar{\rho}_G)+v(\widehat{\rho}_G)-v(H)-1}
+         \\
+         & =
+         \frac{e(\widebar{\rho}_G)+e(G)-e(H)}{
+           v(\widebar{\rho}_G)+v(G)-v(H)-1}
+         \\
+                  & \geq 
+         \frac{
+          e(G)(v(\widebar{\rho}_G)-1) / ( v(G)-1 )  
+          +e(G)-
+          e(G)(v(H)-1) / (v(G)-1)}{
+           v(\widebar{\rho}_G)+v(G)-v(H)-1}
+         \\
+                  & = 
+         \frac{e(G)}{v(G)-1}. 
+         \end{align*} 
+\end{Proof}
+% We also note that if $G$ is connected and the inequality \eqref{stronglybalin} holds for all $\rho_G\in{\rm CNF}_G(2,r)$, then $G$ is strongly balanced.
+\subsection*{Random graph regimes} 
+\noindent
+First, we recall the following standard notation for the asymptotic behavior of the relative order of magnitude of two functions $f(\lambda )$ and $g(\lambda )$ as $\lambda$ tends to infinity.
+We write $f(\lambda )=O(g(\lambda ))$ if $\limsup_{\lambda \to\infty} f(\lambda ) / g(\lambda ) <\infty$;  $f(\lambda )=\Omega(g(\lambda ))$ if $\liminf_{\lambda \to\infty} f(\lambda ) / g(\lambda )>0$, and $f(\lambda )=\Theta(g(\lambda ))$ if $f(\lambda )=O(g(\lambda ))$ and $f(\lambda )=\Omega(g(\lambda ))$. We also write
+\begin{itemize}
+    \item $f(\lambda )\asymp g(\lambda )$ if $f(\lambda )=\Theta(g(\lambda ))$;
+    \item $f(\lambda )\sim g(\lambda )$ if $\lim_{\lambda \to \infty} f(\lambda )/g(\lambda ) = 1$, 
+%    \item $f(x)=o(g(x))$, if $f(x)/g(x)\to 0$;
+%    \item $f(x)\ll g(x)$, or $g(x)\gg f(x)$ if $f(x)\ge0$ and $f(x)=o(g(x))$.
+\end{itemize}
+ and use the convention $0/0=0.$
+%According to \cite{LiuPrivault}, the regime is called the dilute regime if $c_\lambda\asymp\lambda^{-\alpha}$ for some $\alpha\in[0,1)$, and the sparse regime if $c_\lambda\asymp\lambda^{-\alpha}$ for some $\alpha>1$.
+\begin{definition}
+  Let $G$ be a graph with $v(G)=r$ vertices, $r \geq 2$.
+  We consider the dilute, full random graphs
+  and sparse regimes, defined
+  as follows.  
+\begin{itemize}
+\item Dilute regime:
+$\lambda c_\lambda^{e(G)/ ( r-1 )}\gg1$. 
+\item Full random graphs regime:
+$\lambda c_\lambda^{e(G)/ ( r-1 )}\asymp 1$. 
+  \item Sparse regime: $\lambda c_\lambda^{e(G)/ ( r-1 )}\ll1$. 
+\end{itemize}
+\end{definition}
+ We note that when 
+ $c_\lambda\sim\lambda^{-\varepsilon}$ for some
+ $\varepsilon < (r-1)/e(G)\leq 1$ 
+ we are in the dilute regime,
+ whereas when $c_\lambda\sim \lambda^{-\varepsilon}$
+ for some $\varepsilon > (r-1)/e(G)$
+ we are in the sparse regime.
+% When $c_\lambda\equiv K$ for all $\lambda>0$, the dilute regime is also called the full random graph regime. 
+\section{Main result} 
+\noindent 
+For a given graph $G$, finding the dominant asymptotic order
+in the expression of $\kappa_n(N_G)$, $n\ge1$,
+is key to the derivation of normal approximation results
+via the cumulant method. 
+ We have 
+\begin{equation}
+  \label{cum-eq}
+  \kappa_n(N_G)=
+  \sum_{\rho \in \Pi_{\widehat{1}} ( [n] \times [r])
+    \atop
+    {\rho \wedge \pi = \widehat{0}
+    \atop {\rm (non-flat \ \! connected)}
+    }
+    }
+F(\rho)
+\end{equation} 
+ with 
+\begin{equation}
+\nonumber
+  F(\rho):= \int_{(\R^d )^{|\rho |}}
+  \Bigg(
+\prod_{(\eta_1,\eta_2) \in E(\rho_G)}
+H_\lambda(x_{\eta_1},x_{\eta_2})
+\Bigg)
+\prod_{\eta \in V(\rho_G)}
+\Lambda_{\lambda} (\mathrm{d}x_\eta ),
+\qquad \rho\in\Pi( [n]\times [r]), 
+\end{equation}
+ and 
+ \begin{equation}
+   \label{asymptics-1}
+F(\rho)=\Theta(\lambda^{|\rho|}c_\lambda^{e(\rho_G)}). 
+\end{equation}
+In what follows, we identify the leading contribution
+appearing in \eqref{cum-eq} by a geometric argument on 
+$\inte \times \inte$.
+\begin{definition}\label{xyplot}
+ For $n\ge2$ we let 
+\begin{equation}
+\nonumber
+    \Sigma_n(G):=\{(nv(G)-v(\rho_G),ne(G)-e(\rho_G)) \ : \ \rho_G\in
+        {\rm CNF}_G(n,r)
+        \} \subseteq \inte\times \inte.
+\end{equation}
+% We call the upper boundary $\widehat{\Sigma}_n(G)$ of the convex hull of $\Sigma_n(G)$ the {\it roof}, and 
+\end{definition}
+We note that the upper boundary $\widehat{\Sigma}_n(G)$ of the convex hull of $\Sigma_n(G)$ starts at $(n-1,0)$ and ends at $((n-1)r,(n-1)e(G))$,
+ and we say that a diagram $\rho_G\in {\rm CNF}_G(n,r)$ lies on the boundary $\widehat{\Sigma}_n(G)$ if the point $(nv(G)-v(\rho_G),ne(G)-e(\rho_G))$ does. 
+The next figures can be plotted after loading the code presented in
+appendix and running the following commands.
+
+\begin{table}[H] 
+  \centering
+\scriptsize %   \small
+ \resizebox{0.9\textwidth}{!}
+    {
+  \begin{tabular}{|ll|l|} % {\textwidth}{|XX|XX|}
+ \hline
+ \multicolumn{2}{|l|}{
+\EscVerb{G = [[1,2],[2,3],[3,1]]; L=convexhull(2,G)}
+ }
+ \\
+ \hline
+ \multicolumn{2}{|l|}{
+\EscVerb{Polyhedron(L).plot(color = "pink")+point(L,color = "blue",size=20)}
+ }
+ \\
+\hline
+\end{tabular}
+}
+% \caption{Cumulants of the count of $2$-hop paths with two endpoints in dimension $d=1$.}
+\label{t1}
+\end{table} 
+
+\vspace{-0.4cm}
+
+\noindent 
+For example, we have  $\Sigma_2(G)=\{(3,3),(2,1),(1,0)\}$
+ when $G = C_3$ is a triangle. 
+Figure~\ref{fig:diagram3} presents an illustration for
+$\Sigma_n(C_3)$ with $n=3,4$. 
+
+\begin{figure}[H]
+  \begin{subfigure}{.5\textwidth}
+    \vskip1cm
+\begin{tikzpicture}
+%\draw[black, thick] (0,0) rectangle (7,4);
+\draw[->] (0,0) -- (0,4);
+\node[anchor=east,font=\tiny] at (-0.05,4) {y};
+\draw[->] (0,0) -- (7,0);
+\node[anchor=north,font=\tiny] at (7,-0.05) {x};
+\draw[thick] (-0.05,0.5) -- (0.05,0.5);
+\node[anchor=east,font=\tiny] at (-0.05,0.5) {1};
+\draw[thick] (-0.05,1) -- (0.05,1);
+\node[anchor=east,font=\tiny] at (-0.05,1) {2};
+\draw[thick] (-0.05,2) -- (0.05,2);
+\node[anchor=east,font=\tiny] at (-0.05,2) {4};
+\draw[thick] (-0.05,3) -- (0.05,3);
+\node[anchor=east,font=\tiny] at (-0.05,3) {6};
+\draw[thick] (-0.05,1.5) -- (0.05,1.5);
+\node[anchor=east,font=\tiny] at (-0.05,1.5) {3};
+\draw[thick] (-0.05,2.5) -- (0.05,2.5);
+\node[anchor=east,font=\tiny] at (-0.05,2.5) {5};
+\node[anchor=east,font=\tiny] at (-0.05,3) {6};
+\draw[thick] (1,-0.05) -- (1,0.05);
+\node[anchor=north,font=\tiny] at (1,-0.05) {1};
+\draw[thick] (2,-0.05) -- (2,0.05);
+\node[anchor=north,font=\tiny] at (2,-0.05) {2};
+\draw[thick] (3,-0.05) -- (3,0.05);
+\node[anchor=north,font=\tiny] at (3,-0.05) {3};
+\draw[thick] (4,-0.05) -- (4,0.05);
+\node[anchor=north,font=\tiny] at (4,-0.05) {4};
+\draw[thick] (5,-0.05) -- (5,0.05);
+\node[anchor=north,font=\tiny] at (5,-0.05) {5};
+\draw[thick] (6,-0.05) -- (6,0.05);
+\node[anchor=north,font=\tiny] at (6,-0.05) {6};
+\filldraw [blue] (2,0) circle (1.5pt);
+\filldraw [blue] (3,0) circle (1.5pt);
+\filldraw [blue] (3,0.5) circle (1.5pt);
+\filldraw [blue] (4,0.5) circle (1.5pt);
+\filldraw [blue] (4,1) circle (1.5pt);
+\filldraw [blue] (5,1.5) circle (1.5pt);
+\filldraw [blue] (4,1.5) circle (1.5pt);
+\filldraw [blue] (5,2) circle (1.5pt);
+\filldraw [blue] (6,3) circle (1.5pt);
+\draw[thick,red] (2,0) -- (6,3);
+    \end{tikzpicture}
+    \caption{Plot of $\Sigma_3(C_3)$ with $\widehat{\Sigma}_3(C_3)$ in red.}
+    \label{fig:diagram3}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (0,5);
+\node[anchor=east,font=\tiny] at (-0.05,5) {y};
+\draw[->] (0,0) -- (5,0);
+\node[anchor=north,font=\tiny] at (5,-0.05) {x};
+\draw[thick] (-0.05,0.5) -- (0.05,0.5);
+\node[anchor=east,font=\tiny] at (-0.05,0.5) {1};
+\draw[thick] (-0.05,1) -- (0.05,1);
+\node[anchor=east,font=\tiny] at (-0.05,1) {2};
+\draw[thick] (-0.05,1.5) -- (0.05,1.5);
+\node[anchor=east,font=\tiny] at (-0.05,1.5) {3};
+\draw[thick] (-0.05,2) -- (0.05,2);
+\node[anchor=east,font=\tiny] at (-0.05,2) {4};
+\draw[thick] (-0.05,2.5) -- (0.05,2.5);
+\node[anchor=east,font=\tiny] at (-0.05,2.5) {5};
+\draw[thick] (-0.05,3) -- (0.05,3);
+\node[anchor=east,font=\tiny] at (-0.05,3) {6};
+\draw[thick] (-0.05,3.5) -- (0.05,3.5);
+\node[anchor=east,font=\tiny] at (-0.05,3.5) {7};
+\draw[thick] (-0.05,4) -- (0.05,4);
+\node[anchor=east,font=\tiny] at (-0.05,4) {8};
+\draw[thick] (-0.05,4.5) -- (0.05,4.5);
+\node[anchor=east,font=\tiny] at (-0.05,4.5) {9};
+\draw[thick] (1,-0.05) -- (1,0.05);
+\node[anchor=north,font=\tiny] at (1,-0.05) {2};
+\draw[thick] (1.5,-0.05) -- (1.5,0.05);
+\node[anchor=north,font=\tiny] at (1.5,-0.05) {3};
+\draw[thick] (2,-0.05) -- (2,0.05);
+\node[anchor=north,font=\tiny] at (2,-0.05) {4};
+\draw[thick] (2.5,-0.05) -- (2.5,0.05);
+\node[anchor=north,font=\tiny] at (2.5,-0.05) {5};
+\draw[thick] (3,-0.05) -- (3,0.05);
+\node[anchor=north,font=\tiny] at (3,-0.05) {6};
+\draw[thick] (3.5,-0.05) -- (3.5,0.05);
+\node[anchor=north,font=\tiny] at (3.5,-0.05) {7};
+\draw[thick] (4,-0.05) -- (4,0.05);
+\node[anchor=north,font=\tiny] at (4,-0.05) {8};
+\draw[thick] (4.5,-0.05) -- (4.5,0.05);
+\node[anchor=north,font=\tiny] at (4.5,-0.05) {9};
+\filldraw [blue] (1.5,0) circle (1.5pt);
+\filldraw [blue] (2,0) circle (1.5pt);
+\filldraw [blue] (2.5,0) circle (1.5pt);
+\filldraw [blue] (3,0) circle (1.5pt);
+\filldraw [blue] (2,0.5) circle (1.5pt);
+\filldraw [blue] (2.5,0.5) circle (1.5pt);
+\filldraw [blue] (3,0.5) circle (1.5pt);
+\filldraw [blue] (3.5,1) circle (1.5pt);
+\filldraw [blue] (2.5,1) circle (1.5pt);
+\filldraw [blue] (3.5,1.5) circle (1.5pt);
+\filldraw [blue] (2.5,1.5) circle (1.5pt);
+\filldraw [blue] (3,1.5) circle (1.5pt);
+\filldraw [blue] (3,2) circle (1.5pt);
+\filldraw [blue] (3.5,2) circle (1.5pt);
+\filldraw [blue] (3.5,2.5) circle (1.5pt);
+\filldraw [blue] (4,3) circle (1.5pt);
+\filldraw [blue] (3.5,3) circle (1.5pt);
+\filldraw [blue] (4,3.5) circle (1.5pt);
+\filldraw [blue] (4.5,4.5) circle (1.5pt);
+\draw[thick,red] (1.5,0) -- (4.5,4.5);
+\end{tikzpicture}%
+\caption{Plot of $\Sigma_4(C_3)$ with $\widehat{\Sigma}_4(C_3)$ in red.}
+\label{fig:diagram3-b}
+\end{subfigure}
+\caption{Set $\Sigma_n(C_3)$ and upper boundary of its convex hull for $n=3,4$.}
+\label{fig1}
+\end{figure}
+\noindent
+In Figure~\ref{fig:diagram3} we have 
+$$\Sigma_3(C_3)=\{(6, 6), (5, 4), (4, 3), (5, 3), (4, 2), (4, 1), (3, 1), (3, 0), (2, 0)\},$$
+ while in Figure~\ref{fig:diagram3-b} we have 
+\begin{align*}
+\Sigma_4(C_3)&=\{(9, 9), (8, 7), (7, 6), (8, 6), (7, 5), (7, 4), (6, 4), (6, 3),(5, 3), (7, 3), \\
+&~~~~ (6, 2),
+(5, 2), (7, 2), (6, 1), (5, 1), (4, 1), (6, 0), (5, 0), (4, 0), (3, 0)\}.
+\end{align*}
+% \vspace{-0.4cm}
+\noindent
+The case where $G=C_4$ is a rectangle is considered
+in Figure~\ref{fig:diagram4} with $\Sigma_2(C_4)$ and in 
+Figure~\ref{fig:diagram4-b} with $\Sigma_3(C_4)$. 
+
+% \smallskip
+ 
+\begin{figure}[H]
+% \captionsetup[subfigure]{font=footnotesize}
+% \centering
+\begin{subfigure}{.5\textwidth}
+  \vskip2cm
+  \begin{tikzpicture}
+%\draw[black, thick] (0,0) rectangle (7,4);
+\draw[->] (0,0) -- (0,3);
+\node[anchor=east,font=\tiny] at (-0.05,3) {y};
+\draw[->] (0,0) -- (5,0);
+\node[anchor=north,font=\tiny] at (5,-0.05) {x};
+\draw[thick] (-0.05,0.5) -- (0.05,0.5);
+\node[anchor=east,font=\tiny] at (-0.05,0.5) {1};
+\draw[thick] (-0.05,1) -- (0.05,1);
+\node[anchor=east,font=\tiny] at (-0.05,1) {2};
+\draw[thick] (-0.05,2) -- (0.05,2);
+\node[anchor=east,font=\tiny] at (-0.05,2) {4};
+\draw[thick] (1,-0.05) -- (1,0.05);
+\node[anchor=north,font=\tiny] at (1,-0.05) {1};
+\draw[thick] (2,-0.05) -- (2,0.05);
+\node[anchor=north,font=\tiny] at (2,-0.05) {2};
+\draw[thick] (3,-0.05) -- (3,0.05);
+\node[anchor=north,font=\tiny] at (3,-0.05) {3};
+\draw[thick] (4,-0.05) -- (4,0.05);
+\node[anchor=north,font=\tiny] at (4,-0.05) {4};
+\filldraw [blue] (1,0) circle (1.5pt);
+\filldraw [blue] (2,0) circle (1.5pt);
+\filldraw [blue] (2,0.5) circle (1.5pt);
+\filldraw [blue] (3,0.5) circle (1.5pt);
+\filldraw [blue] (3,1) circle (1.5pt);
+\filldraw [blue] (4,1) circle (1.5pt);
+\filldraw [blue] (4,2) circle (1.5pt);
+\draw[thick,red] (1,0) -- (4,2);
+\end{tikzpicture}%
+    \caption{Plot of $\Sigma_2(C_4)$ with $\widehat{\Sigma}_2(C_4)$ in red.}
+    \label{fig:diagram4}
+\end{subfigure} 
+\begin{subfigure}{.5\textwidth}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (0,5);
+\node[anchor=east,font=\tiny] at (-0.05,5) {y};
+\draw[->] (0,0) -- (5,0);
+\node[anchor=north,font=\tiny] at (5,-0.05) {x};
+\draw[thick] (-0.05,0.5) -- (0.05,0.5);
+\node[anchor=east,font=\tiny] at (-0.05,0.5) {1};
+\draw[thick] (-0.05,1) -- (0.05,1);
+\node[anchor=east,font=\tiny] at (-0.05,1) {2};
+\draw[thick] (-0.05,1.5) -- (0.05,1.5);
+\node[anchor=east,font=\tiny] at (-0.05,1.5) {3};
+\draw[thick] (-0.05,2) -- (0.05,2);
+\node[anchor=east,font=\tiny] at (-0.05,2) {4};
+\draw[thick] (-0.05,2.5) -- (0.05,2.5);
+\node[anchor=east,font=\tiny] at (-0.05,2.5) {5};
+\draw[thick] (-0.05,3) -- (0.05,3);
+\node[anchor=east,font=\tiny] at (-0.05,3) {6};
+\draw[thick] (-0.05,4) -- (0.05,4);
+\node[anchor=east,font=\tiny] at (-0.05,4) {8};
+\draw[thick] (1,-0.05) -- (1,0.05);
+\node[anchor=north,font=\tiny] at (1,-0.05) {2};
+\draw[thick] (2,-0.05) -- (2,0.05);
+\node[anchor=north,font=\tiny] at (2,-0.05) {4};
+\draw[thick] (3,-0.05) -- (3,0.05);
+\node[anchor=north,font=\tiny] at (3,-0.05) {6};
+\draw[thick] (4,-0.05) -- (4,0.05);
+\node[anchor=north,font=\tiny] at (4,-0.05) {8};
+\filldraw [blue] (1,0) circle (1.5pt);
+\filldraw [blue] (1.5,0) circle (1.5pt);
+\filldraw [blue] (2,0) circle (1.5pt);
+\filldraw [blue] (2.5,0.5) circle (1.5pt);
+\filldraw [blue] (2.5,1) circle (1.5pt);
+\filldraw [blue] (2.5,1.5) circle (1.5pt);
+\filldraw [blue] (2.5,2) circle (1.5pt);
+\filldraw [blue] (2,0.5) circle (1.5pt);
+\filldraw [blue] (2,1) circle (1.5pt);
+\filldraw [blue] (1.5,0.5) circle (1.5pt);
+\filldraw [blue] (3,2.5) circle (1.5pt);
+\filldraw [blue] (3.5,3) circle (1.5pt);
+\filldraw [blue] (3.5,2.5) circle (1.5pt);
+\filldraw [blue] (3.5,1.5) circle (1.5pt);
+\filldraw [blue] (3.5,1) circle (1.5pt);
+\filldraw [blue] (3,1) circle (1.5pt);
+\filldraw [blue] (3,.5) circle (1.5pt);
+\filldraw [blue] (3,0) circle (1.5pt);
+\filldraw [blue] (2.5,0) circle (1.5pt);
+\filldraw [blue] (3,1.5) circle (1.5pt);
+\filldraw [blue] (3,2) circle (1.5pt);
+\filldraw [blue] (3.5,2) circle (1.5pt);
+\filldraw [blue] (4,3) circle (1.5pt);
+\filldraw [blue] (4,4) circle (1.5pt);
+\draw[thick,red] (1,0) -- (4,4);
+\end{tikzpicture}%
+\caption{Plot of $\Sigma_3(C_4)$ with $\widehat{\Sigma}_3(C_4)$ in red.}
+% \caption{  Example of $\Sigma_n(C_4)$
+  % on $G=(V_G,E)$ with $V_G=\{u_1, u_2,u_3,u_4,v_1,v_2\}$ 
+% with $n=2,3$.}
+\label{fig:diagram4-b}
+\end{subfigure}
+\caption{Set $\Sigma_n(C_4)$ and upper boundary of its convex hull for $n=2,3$.}\label{fig2}
+\end{figure}
+\vskip-0.3cm
+\noindent 
+In the sequel, we let $\widehat{\Sigma}_n(G)$ be written as 
+ $$
+ \widehat{\Sigma}_n(G)=\{(x_i,y_i):i=0,1,\dots,\ell\}, 
+$$ 
+ for some $\ell\ge1$,
+with $(x_0,y_0)=(n-1,0)$,
+$(x_\ell,y_\ell)=((n-1)r,(n-1) e(G))$,
+and
+$$x_0<x_1 < \cdots < x_\ell < x_{\ell +1}:= + \infty.
+$$
+In addition, for any point $(x_i,y_i)$ on the boundary
+$\widehat{\Sigma}_n(G)$, $i\in \{0,1,\ldots , \ell\}$,
+ there exists $\rho_{i,G}\in {\rm CNF}_G(n,r)$
+ such that
+ \begin{equation}
+   \label{fjklf} 
+v(\rho_{i,G})=nr-x_i \quad \mbox{and} \quad e(\rho_{i,G})=ne(G)-y_i. 
+\end{equation}
+
+\begin{definition}
+ For any $\rho_G \in \Sigma_n(G)$, we let 
+$$
+ x_{\rho_G} : = nv(G)-v(\rho_G) \mbox{ and }
+ \ 
+ y_{\rho_G} : = ne(G)-e(\rho_G), 
+$$ 
+ and given $i\in \{0,\ldots , \ell \}$ such that
+ $x_i\le x_{\rho_G} <x_{i+1}$, we let 
+ $$
+ \theta^-_{\rho_G} : = \left\{
+ \begin{array}{ll}
+   +\infty & \mbox{if } i=0,
+   \medskip
+   \\ 
+   \displaystyle
+   \frac{y_i-y_{i-1}}{x_i-x_{i-1}} & \mbox{if } i\in \{1,\ldots , \ell \}, 
+ \end{array}
+ \right.
+ \qquad 
+ \theta^+_{\rho_G} : = 
+ \left\{
+ \begin{array}{ll}
+   \displaystyle
+   \frac{y_{i+1}-y_i}{x_{i+1}-x_i}
+   & \mbox{if } i\in \{0,\ldots ,  \ell - 1\}, 
+   \medskip
+   \\ 
+   0 & \mbox{if } i=\ell. 
+ \end{array}
+ \right.
+$$ 
+\end{definition} 
+Since $\widehat{\Sigma}_n(G)$ is the
+upper boundary of
+the convex hull of $\Sigma_n(G)$, we note that
+$\theta^-_{\rho_G} \geq \theta^+_{\rho_G}$.
+ For a given $n\ge2$, a diagram $\rho_G\in {\rm CNF}_G(n,r)$
+ is called a leading diagram if 
+\begin{equation}\label{asy-2}
+\kappa_n(N_G)=\Theta\big(\lambda^{v(\rho_G)}c_\lambda^{e(\rho_G)}\big). 
+\end{equation}
+% if $\lim_{\lambda \to \infty} c_\lambda =0$. 
+% Leading diagrams owes their name to the fact that they correspond to the leading terms of the cumulant expression \eqref{cum-eq}.
+% The terminology is extending from random graph theory, \cite{luczak,JLR}, where it is defined only for variance term, i.e. when $n=2$.
+ In the next lemma, we identify leading diagrams
+ by a convexity argument. 
+% by plotting the points that represent a `loss' caused by merging vertices and gluing edges when generating diagram $\rho_G$.
+\begin{lemma}\label{lm:slope}
+  Assume that $\lim_{\lambda \to \infty} c_\lambda =0$.
+  Let $G$ be a connected graph with $v(G)=r$ vertices, $r\ge2$, and
+  let $n\ge2$. 
+  \begin{enumerate}[1)]
+  \item
+    Any leading diagram $\rho_G\in {\rm CNF}_G(n,r)$ lies on the
+    upper boundary $\widehat{\Sigma}_n(G)$, i.e. 
+  $$
+  (nv(G)-v(\rho_G),ne(G)-e(\rho_G)) \in \widehat{\Sigma}_n(G).
+  $$
+ \item
+  If a diagram $\rho_G\in {\rm CNF}_G(n,r)$ lies on the
+  upper boundary $\widehat{\Sigma}_n(G)$ and 
+  \begin{equation}
+    \label{fjk5lf4} 
+  \lambda c_\lambda^{ \theta^-_{\rho_G}}=O(1) \ \mbox{ and } \
+  \lambda c_\lambda^{ \theta^+_{\rho_G} }=\Omega(1), 
+\end{equation}
+ then $\rho_G$ is a leading diagram.
+\end{enumerate}
+\end{lemma}
+\begin{Proof}
+  % It is clear that $(n-1,0)$ and $((n-1)r,(n-1)k)$ lies on the boundary $\widehat{\Sigma}_n(G)$.
+\noindent
+$1)$ Consider a diagram
+$\rho_G\in {\rm CNF}_G(n,r)$ which is not on the boundary
+$\widehat{\Sigma}_n(G)$, i.e. 
+$$
+( x_{\rho_G} , y_{\rho_G} ) :=
+( nv(G)-v(\rho_G) , ne(G)-e(\rho_G) )
+\in\Sigma_n(G)\backslash \widehat{\Sigma}_n(G).
+$$ 
+ If $x_{\rho_G}=x_\ell$, we know that $y_{\rho_G}<y_\ell,$ since $(x_{\rho_G},y_{\rho_G})$ is not on the boundary $\widehat{\Sigma}_n(G)$. Therefore, we have 
+ $$\lambda^{v(\rho_G)-v(\rho_{\ell,G})}c_\lambda^{e(\rho_G)-e (\rho_{\ell,G})}=c_\lambda^{y_{\ell}-y_{\rho_G}}\ll1,
+ $$
+ and $\rho_G$ is not a leading diagram.
+
+ \medskip
+
+ If $x_{\rho_G}<x_\ell$, we choose $i\in \{0,\ldots , \ell-1 \}$
+such that
+ $x_i\le x_{\rho_G} <x_{i+1}$. 
+Since $\widehat{\Sigma}_n(G)$ is the upper boundary of a
+convex hull, by \eqref{fjklf} 
+ if $i<\ell $ we have 
+ $$\nu:=\frac{y_{i+1}-y_{\rho_G}}{x_{i+1}-x_{\rho_G}}
+ > \theta^+_{\rho_G} = \frac{y_{i+1}-y_i}{x_{i+1}-x_i}
+ = \frac{e(\rho_{i,G})-e(\rho_{i+1,G})}{v(\rho_{i,G})-v(\rho_{i+1,G})},
+ $$
+ i.e. $\lambda c_\lambda^\nu
+ \ll\lambda c_\lambda^{\theta^+_{\rho_G}}$
+ because $\lim_{\lambda \to \infty} c_\lambda =0$, and 
+ we consider three cases.
+ \begin{enumerate}[i)]
+   \item If
+ $
+1\ll\lambda c_\lambda^\nu
+$, we have 
+\begin{align*}
+  \lambda^{v({\rho_G})-v(\rho_{i+1,G})}c_\lambda^{e({\rho_G})-e(\rho_{i+1,G})}
+  & =  \left(\lambda c_\lambda^\nu\right)^{v({\rho_G})-v(\rho_{i+1,G})}
+  \\
+  & \ll \left(\lambda c_\lambda^{\theta^+_{\rho_G}} \right)^{v({\rho_G})-v(\rho_{i+1,G})}
+  \\
+   &   \leq \left(\lambda c_\lambda^{\theta^+_{\rho_G}}\right)^{v(\rho_{i,G})-v(\rho_{i+1,G})}
+  \\
+   & =  \lambda^{v(\rho_{i,G})-v(\rho_{i+1,G})}c_\lambda^{e(\rho_{i,G})-e(\rho_{i+1,G})}, 
+\end{align*}
+which implies $\lambda^{v({\rho_G})}c_\lambda^{e({\rho_G})}\ll \lambda^{v(\rho_{i,G})}c_\lambda^{e(\rho_{i,G})}$
+ as $\lim_{\lambda \to \infty} c_\lambda =0$, hence
+ the diagram $\rho_G$ is not leading. 
+\item  If
+ $\lim_{\lambda \to \infty} \lambda c_\lambda^\nu = c>0$, we have 
+\begin{align*}
+  \lambda^{v({\rho_G})-v(\rho_{i+1,G})}c_\lambda^{e({\rho_G})-e(\rho_{i+1,G})}
+  & =  \left(\lambda c_\lambda^\nu\right)^{v({\rho_G})-v(\rho_{i+1,G})}
+  \\
+  & \ll \left(\lambda c_\lambda^{\theta^+_{\rho_G}} \right)^{v({\rho_G})-v(\rho_{i+1,G})}
+  \\
+   &  \asymp \left(\lambda c_\lambda^{\theta^+_{\rho_G}}\right)^{v(\rho_{i,G})-v(\rho_{i+1,G})}
+  \\
+   & =  \lambda^{v(\rho_{i,G})-v(\rho_{i+1,G})}c_\lambda^{e(\rho_{i,G})-e(\rho_{i+1,G})}, 
+\end{align*}
+\noindent
+ and we conclude as above. 
+\item  If
+ $\lambda c_\lambda^\nu\ll 1$, we have
+ \begin{equation*}
+\lambda^{v({\rho_G})-v(\rho_{i+1,G})}c_\lambda^{e({\rho_G})-e(\rho_{i+1,G})}\ll1, 
+\end{equation*}
+ hence
+ $$\lambda^{v({\rho_G})}c_\lambda^{e({\rho_G})}\ll \lambda^{v(\rho_{i+1,G})}c_\lambda^{e(\rho_{i+1,G})}.
+ $$
+\noindent 
+ As a consequence of the above, we find  
+\begin{equation}
+\nonumber
+\lambda^{v({\rho_G})}c_\lambda^{e({\rho_G})}
+\ll
+\lambda^{v(\rho_{i,G})}c_\lambda^{e(\rho_{i,G})}
+  \ \mbox{ or } \ 
+\lambda^{v({\rho_G})}c_\lambda^{e({\rho_G})}
+\ll
+\lambda^{v(\rho_{i+1,G})}c_\lambda^{e(\rho_{i+1,G})}, 
+\end{equation}
+ hence ${\rho_G}$ is not a leading diagram. 
+\end{enumerate} 
+\noindent
+$2)$ Suppose that $\rho_{G}$ lies on the boundary $\widehat{\Sigma}_{n}(G)$.
+Then, there exists $i\in \{0,\dots,\ell\}$
+ such that $(x_{\rho_{G}},y_{\rho_{G}})=(x_{i},y_{i})$, and it holds that
+$$
+\lambda c_\lambda^{ \theta^-_{\rho_G}}=O(1) \ \mbox{ and } \
+  \lambda c_\lambda^{ \theta^+_{\rho_G} }=\Omega(1). 
+$$
+  \begin{enumerate}[i)] 
+  \item
+    If $j<i$, then $x_{j}-x_{i}<0$ and
+  $$
+  \frac{y_{i}-y_{j}}{x_{i}-x_{j}}\ge\frac{y_{i}-y_{i-1}}{x_{i}-x_{i-1}}=\theta_{\rho_{G}}^{-}.
+  $$
+  Hence, 
+\begin{equation}
+  \lambda c_{\lambda}^{(y_{i}-y_{j})/(x_{i}-x_{j})}=O\big(\lambda c_\lambda^{ \theta^-_{\rho_G}}
+  \big)=O(1).
+\end{equation}
+Now, since
+\begin{eqnarray}
+  \label{fjkl4}
+  \frac{\lambda^{nv(G)-x_{i}}c_{\lambda}^{ne(G)-y_{i}}}{\lambda^{nv(G)-x_{j}}c_{\lambda}^{ne(G)-y_{j}}}=\lambda^{x_{j}-x_{i}}c_{\lambda}^{y_{j}-y_{i}}=\big(\lambda c_{\lambda}^{
+    (y_{j}-y_{i})/(x_{j}-x_{i})}\big)^{x_{j}-x_{i}}, 
+\end{eqnarray} 
+ we find 
+\begin{equation}
+  \nonumber
+  \frac{\lambda^{v(\rho_G)}c_{\lambda}^{e(\rho_G)}}{\lambda^{v(\rho_{j,G})}c_{\lambda}^{e(\rho_{j,G})}}=\Omega(1).
+\end{equation}
+\item
+   If $j>i$, then $x_{j}-x_{i}>0$ and
+$$
+\frac{y_{j}-y_{i}}{x_{j}-x_{i}}\le\theta_{\rho_{G}}^{+},
+$$
+ therefore
+\begin{equation}
+  \lambda c_{\lambda}^{ ( y_{i}-y_{j})/(x_{i}-x_{j})}=\Omega
+ \big(\lambda c_\lambda^{ \theta^+_{\rho_G}}\big)=\Omega(1),
+\end{equation}
+and \eqref{fjkl4} shows that 
+\begin{equation}
+  \nonumber
+  \frac{\lambda^{v(\rho_G)}c_{\lambda}^{e(\rho_G)}}{\lambda^{v(\rho_{j,G})}c_{\lambda}^{e(\rho_{j,G})}}=\Omega(1).
+\end{equation}
+  \end{enumerate}
+  This ensures that $\rho_G$ is a leading diagram.
+\end{Proof}
+ By Lemma~\ref{lma:stronglybal} we obtain the following dichotomy result. 
+\begin{prop}
+   \label{dich1}
+ Let $G$ be a strongly balanced and connected
+ graph with $v(G)=r$ vertices, $r \geq 2$,
+ and assume that $\lim_{\lambda \to \infty} c_\lambda =0$.
+\begin{enumerate}[a)]
+  \item If $\lambda c_\lambda^{e(G)/ ( r-1 )}\gg1$, we have
+\begin{equation}
+\label{r1} 
+  \kappa_n(N_G)=\Theta\big(\lambda^{(r-1)n+1}c_\lambda^{ne(G)}\big). 
+\end{equation}
+\item If $\lambda c_\lambda^{e(G)/ ( r-1 )}\ll1$, we find 
+\begin{equation}
+\label{r2} 
+  \kappa_n(N_G)=\Theta\big(\lambda^{r}c_\lambda^{e(G)}\big).
+\end{equation}
+\item If $\lambda c_\lambda^{e(G)/ ( r-1 )}\asymp 1$, we have
+\begin{equation}
+\label{r3} 
+  \kappa_n(N_G)\asymp \lambda.  
+\end{equation}
+\end{enumerate} 
+\end{prop} 
+\begin{Proof}
+  It is clear that $v(\rho_G)\le (r-1)n+1$ for all $\rho_G\in {\rm CNF}_G(n,r)$. For any $\rho_G$ with $v(\rho_G)<(r-1)n+1$,
+ Lemma~\ref{lma:stronglybal} shows that 
+\begin{equation}\label{condi-1}
+  \frac {e(G)}{v(G)-1}\le\frac{e(\rho_G)}{v(\rho_G)-1},
+  \qquad
+  \rho_G\in {\rm CNF}_G(n,r), 
+\end{equation}
+ which implies 
+\begin{equation}
+\nonumber
+          \frac{ne(G)-e(\rho_G)}{(r-1)n+1-v(\rho_G)}\le\frac{e(G)}{r-1}, 
+\end{equation}
+ hence 
+$\widehat{\Sigma}_n(G)$ 
+ is the segment with endpoints
+ $$
+ (x_0,y_0)=(n-1,0)
+ \ \mbox{ and } \ 
+ (x_\ell,y_\ell)=((n-1)r,(n-1) e(G)),
+ $$ 
+ and slope
+ $
+ \theta^+_{\rho_G}
+=\theta^-_{\rho_G}
+=
+ e(G) / ( r-1)$,
+ and by Lemma~\ref{lm:slope}-$(1)$
+ the leading diagram $\rho_G$ must lie on 
+$\widehat{\Sigma}_n(G)$.  
+ \begin{enumerate}[a)]
+   \item 
+     For any $j=1,\dots,\ell$, by
+     \eqref{fjklf} 
+ we have
+\begin{eqnarray*} 
+ \frac{\lambda^{v(\rho_{0,G})}c_\lambda^{e(\rho_{0,G})}}{\lambda^{v(\rho_{j,G})}c_\lambda^{e(\rho_{j,G})}} & = & 
+ \frac{\lambda^{(r-1)n+1}c_\lambda^{ne(G)}}{\lambda^{nr-x_j}c_\lambda^{ne(G)-y_j}}
+ \\
+  & = & 
+ \frac{\lambda^{nr-x_0}c_\lambda^{ne(G)-y_0}}{\lambda^{nr-x_j}c_\lambda^{ne(G)-y_j}}
+ \\
+  & = & 
+ \lambda^{x_j-x_0} c_\lambda^{y_j-y_0}
+ \\
+  & = & 
+ \lambda^{x_j-x_0} c_\lambda^{\theta^+_G (x_j-x_0)}
+ \\
+  & = & 
+\big(\lambda c_\lambda^{e(G) / ( r-1 )}\big)^{x_j-x_0},
+\end{eqnarray*} 
+    hence if $\lambda c_\lambda^{e(G)/(r-1)}\gg1$,
+    we find 
+$$
+ \frac{\lambda^{v(\rho_{0,G})}c_\lambda^{e(\rho_{0,G})}}{\lambda^{v(\rho_{j,G})}c_\lambda^{e(\rho_{j,G})}}\gg1, 
+  $$
+ therefore any $\rho_G$ such that 
+       $(v(\rho_G),e(\rho_G))=(v(\rho_{0,G}),e(\rho_{0,G}))=((r-1)n+1,ne(G))$
+ is a leading diagram, 
+ and this yields \eqref{r1} by \eqref{asy-2}.  
+\item
+ For any $j=0,\dots,\ell-1$, by \eqref{fjklf} 
+     we have
+\begin{eqnarray*} 
+  \frac{\lambda^{v(\rho_{\ell , G})}c_\lambda^{e(\rho_{\ell , G})}}{\lambda^{v(\rho_{j , G})}c_\lambda^{e(\rho_{j , G})}}
+  & = &
+  \frac{\lambda^{r}c_\lambda^{e(G)}}{\lambda^{nr-x_j}c_\lambda^{ne(G)-y_j}}
+  \\
+  & = &
+  \frac{\lambda^{nr-x_\ell}c_\lambda^{ne(G)-y_\ell}}{\lambda^{nr-x_j}c_\lambda^{ne(G)-y_j}}
+  \\
+  & = &
+  \lambda^{x_j-x_\ell}c_\lambda^{y_j-y_\ell}
+  \\
+  & = &
+  \lambda^{x_j-x_\ell}c_\lambda^{\theta^+_G (x_j-x_\ell )}
+  \\
+  & = &
+  \big(\lambda c_\lambda^{e(G) / ( r-1) }\big)^{x_j-x_\ell}, 
+  \end{eqnarray*}
+ hence if $\lambda c_\lambda^{e(G)/(r-1)}\ll1$,
+    we find 
+$$
+     \frac{\lambda^{v(\rho_{\ell , G})}c_\lambda^{e(\rho_{\ell , G})}}{\lambda^{v(\rho_{j , G})}c_\lambda^{e(\rho_{j , G})}}\gg 1, 
+  $$
+ therefore any $\rho_G$ such that 
+ $(v(\rho_G),e(\rho_G))=(v(\rho_{\ell , G}),e(\rho_{\ell , G}))=(r,e(G))$
+ is a leading diagram, 
+ and this yields \eqref{r2} by \eqref{asy-2}.  
+ \item
+ If $\lambda c_\lambda^{e(G)/(r-1)}\asymp 1$
+  then any diagram $\rho_{i,G}$, $i=0,1, \ldots , \ell$
+ on the segment $\widehat{\Sigma}_n(G)$
+ is a leading diagram by Lemma~\ref{lm:slope}-$(2)$. 
+ Furthermore, by choosing $j=\ell$ with
+ $(v(\rho_G),e(\rho_G))=(v(\rho_{\ell , G}),e(\rho_{\ell , G}))=(r,e(G))$, 
+ we have 
+$$
+  \kappa_n(N_G)=\Theta\big(\lambda^r c_\lambda^{e(G)}\big)
+  =\lambda \Theta\big(\lambda^{r-1} c_\lambda^{e(G)}\big)
+  \asymp \lambda, 
+$$ 
+  which yields \eqref{r3} by \eqref{asy-2}.
+\end{enumerate} 
+~% \begin{eqnarray}
+%   \frac{\lambda^{(r-1)n+1}c_\lambda^{ne(G)}}{\lambda^{r}c_\lambda^{e(G)}}%=\frac{\lambda^{nr-x_0}c_\lambda^{ne(G)-y_0}}{\lambda^{nr-x_\ell}c_\lambda^{ne(G)-y_\ell}}
+%   =\lambda^{(n-1)(r-1)}c_\lambda^{(n-1)e(G)}=\left(\lambda c_\lambda^{\frac{e(G)}{r-1}}\right)^{(n-1)(r-1)}\gg1.
+% \end{eqnarray}
+% Also, 
+\end{Proof}
+Combining Lemmas~\ref{lma:stronglybal} and
+ \ref{lm:slope} shows that as long as $G$ is strongly balanced, we can say that the leading asymptotic order is fully determined by either the maximal connected partition or the completely overlap one. 
+\begin{remark}
+  Combining Lemma~\ref{lma:stronglybal} and Proposition~\ref{dich1}, we know that for a connected and strongly balanced graph $G$ with $r=v(G)$,
+  if $\lambda c_\lambda^{e(G) / ( r-1)}\gg1$, i.e. $c_\lambda\gg\lambda^{- ( r-1 )/e(G)}$, 
+  then
+  $$\kappa_n(N_G)=\Theta\big(\lambda^{(r-1)n+1}c_\lambda^{ne(G)}\big).
+  $$
+  The claim in \cite[Proposition~6.5]{LiuPrivault} only holds for $G$ strongly balanced and $c_\lambda\gg\lambda^{-\frac{r-1}e(G)}$. Note that except when
+   $G$ is a tree we have $(r-1)/e(G)<1$, which means the restraint $c_\lambda\gg\lambda^{- (r-1) / e(G)}$ is stricter than the ``Dilute regime'' in most cases. 
+\end{remark}
+ This strongly balanced condition turns out to be necessary for this dichotomy phenomenon, as shown in the following counterexample. 
+\begin{example}
+  Consider the connected graph $G$ of Figure~\ref{fig:diagram5}
+  which not strongly balanced, with $v(G)=e(G)=4$. 
+\begin{figure}[H]
+\captionsetup[subfigure]{font=footnotesize}
+\centering
+\begin{tikzpicture}
+\filldraw [blue] (1,0) circle (1.5pt);
+\filldraw [blue] (1,2) circle (1.5pt);
+\filldraw [blue] (2.5,1) circle (1.5pt);
+\filldraw [blue] (4,1) circle (1.5pt);
+\draw[thick] (1,0) -- (1,2) -- (2.5,1) -- (1,0);
+\draw[thick] (2.5,1) -- (4,1);
+\end{tikzpicture}%
+\caption{An example of a not strongly balanced graph.}\label{fig:diagram5} 
+\end{figure}
+
+\vskip-0.5cm
+
+  \noindent
+  From Figure~\ref{fig:diagram6}, we can see that there are some other leading diagrams on
+ $\widehat{\Sigma}_2(G)$, which indicates that the asymptotic order of $\kappa_2(G)$ (and also $\kappa_3(G)$) cannot be fully determined by the so-called maximal connected partition and ``completely overlap'' partition.  
+
+\begin{figure}[H]
+\begin{subfigure}{.5\textwidth}
+  \vskip1.5cm
+  \begin{tikzpicture}
+\draw[->] (0,0) -- (0,3);
+\node[anchor=east,font=\tiny] at (-0.05,3) {y};
+\draw[->] (0,0) -- (5,0);
+\node[anchor=north,font=\tiny] at (5,-0.05) {x};
+\draw[thick] (-0.05,0.5) -- (0.05,0.5);
+\node[anchor=east,font=\tiny] at (-0.05,0.5) {1};
+\draw[thick] (-0.05,1) -- (0.05,1);
+\node[anchor=east,font=\tiny] at (-0.05,1) {2};
+\draw[thick] (-0.05,2) -- (0.05,2);
+\node[anchor=east,font=\tiny] at (-0.05,2) {4};
+\draw[thick] (1,-0.05) -- (1,0.05);
+\node[anchor=north,font=\tiny] at (1,-0.05) {1};
+\draw[thick] (2,-0.05) -- (2,0.05);
+\node[anchor=north,font=\tiny] at (2,-0.05) {2};
+\draw[thick] (3,-0.05) -- (3,0.05);
+\node[anchor=north,font=\tiny] at (3,-0.05) {3};
+\draw[thick] (4,-0.05) -- (4,0.05);
+\node[anchor=north,font=\tiny] at (4,-0.05) {4};
+\filldraw [blue] (4,1) circle (1.5pt);
+\filldraw [blue] (3,0.5) circle (1.5pt);
+\filldraw [blue] (3,0) circle (1.5pt);
+\filldraw [blue] (3,1) circle (1.5pt);
+\filldraw [blue] (2,0) circle (1.5pt);
+\filldraw [blue] (2,0.5) circle (1.5pt);
+\filldraw [blue] (1,0) circle (1.5pt);
+\filldraw [blue] (4,1.5) circle (1.5pt);
+\filldraw [blue] (4,2) circle (1.5pt);
+\filldraw [blue] (3,1.5) circle (1.5pt);
+\draw[gray, thin] (1,0) -- (4,2);
+\draw[red,thick] (1,0) -- (3,1.5) -- (4,2);
+\end{tikzpicture}
+    \caption{Plot of $\Sigma_2(G)$ with $\widehat{\Sigma}_2(G)$ in red.}
+    \label{fig:diagram6}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (0,4.5);
+\node[anchor=east,font=\tiny] at (-0.05,4.5) {y};
+\draw[->] (0,0) -- (4.5,0);
+\node[anchor=north,font=\tiny] at (4.5,-0.05) {x};
+\draw[thick] (-0.05,0.5) -- (0.05,0.5);
+\node[anchor=east,font=\tiny] at (-0.05,0.5) {1};
+\draw[thick] (-0.05,1) -- (0.05,1);
+\node[anchor=east,font=\tiny] at (-0.05,1) {2};
+\draw[thick] (-0.05,1.5) -- (0.05,1.5);
+\node[anchor=east,font=\tiny] at (-0.05,1.5) {3};
+\draw[thick] (-0.05,2) -- (0.05,2);
+\node[anchor=east,font=\tiny] at (-0.05,2) {4};
+\draw[thick] (-0.05,2.5) -- (0.05,2.5);
+\node[anchor=east,font=\tiny] at (-0.05,2.5) {5};
+\draw[thick] (-0.05,3) -- (0.05,3);
+\node[anchor=east,font=\tiny] at (-0.05,3) {6};
+\draw[thick] (-0.05,4) -- (0.05,4);
+\node[anchor=east,font=\tiny] at (-0.05,4) {8};
+\draw[thick] (1,-0.05) -- (1,0.05);
+\node[anchor=north,font=\tiny] at (1,-0.05) {2};
+\draw[thick] (2,-0.05) -- (2,0.05);
+\node[anchor=north,font=\tiny] at (2,-0.05) {4};
+\draw[thick] (3,-0.05) -- (3,0.05);
+\node[anchor=north,font=\tiny] at (3,-0.05) {6};
+\draw[thick] (4,-0.05) -- (4,0.05);
+\node[anchor=north,font=\tiny] at (4,-0.05) {8};
+\filldraw [blue] (4,3) circle (1.5pt);
+\filldraw [blue] (3.5,1.5) circle (1.5pt);
+\filldraw [blue] (3.5,2) circle (1.5pt);
+\filldraw [blue] (3,1) circle (1.5pt);
+\filldraw [blue] (3,1.5) circle (1.5pt);
+\filldraw [blue] (2.5,1) circle (1.5pt);
+\filldraw [blue] (3.5,2.5) circle (1.5pt);
+\filldraw [blue] (2.5,0.5) circle (1.5pt);
+\filldraw [blue] (3.5,1) circle (1.5pt);
+\filldraw [blue] (3,0.5) circle (1.5pt);
+\filldraw [blue] (2,0.5) circle (1.5pt);
+\filldraw [blue] (3,2) circle (1.5pt);
+\filldraw [blue] (2.5,0) circle (1.5pt);
+\filldraw [blue] (3,0) circle (1.5pt);
+\filldraw [blue] (2,0) circle (1.5pt);
+\filldraw [blue] (3.5,3) circle (1.5pt);
+\filldraw [blue] (2.5,1.5) circle (1.5pt);
+\filldraw [blue] (2,1) circle (1.5pt);
+\filldraw [blue] (3,2.5) circle (1.5pt);
+\filldraw [blue] (1.5,0) circle (1.5pt);
+\filldraw [blue] (1.5,0.5) circle (1.5pt);
+\filldraw [blue] (2.5,2) circle (1.5pt);
+\filldraw [blue] (1,0) circle (1.5pt);
+\filldraw [blue] (2,1.5) circle (1.5pt);
+\filldraw [blue] (4,3.5) circle (1.5pt);
+\filldraw [blue] (4,4) circle (1.5pt);
+\filldraw [blue] (3.5,3.5) circle (1.5pt);
+\filldraw [blue] (3,3) circle (1.5pt);
+\draw[gray, thin] (1,0) -- (4,4);
+\draw[red, thick] (1,0) -- (2,1.5) -- (3,3) -- (4,4);
+\end{tikzpicture}%
+    \caption{Plot of $\Sigma_3(G)$ and $\widehat{\Sigma}_3(G)$ in red.}
+    \label{fig:diagram6-b}
+\end{subfigure}
+%    \caption{  Example of $\Sigma_n(G)$
+  % on $G=(V_G,E)$ with $V_G=\{u_1, u_2,u_3,u_4,v_1,v_2\}$ 
+%  with $n=2,3$.}
+\caption{Set $\Sigma_n(G)$ and upper boundary of its convex hull for $n=2,3$.}
+\label{fig4}
+\end{figure}
+\end{example}
+As a consequence of Proposition~\ref{dich1}, we also obtain
+a Poisson limit theorem for subgraph counts. 
+In the sequel, we let
+ $|\mathrm{Aut}(G)|$ denote the number of automorphisms of $G$.
+\begin{thm}
+  Let $G$ be a connected,
+  strongly balanced graph with $r=v(G)$ vertices.
+  If $\lim_{\lambda \to \infty} \lambda c_\lambda^{e(G)/r} = c>0$,
+  then the subgraph count $\widehat{N}_G:=N_G/|\mathrm{Aut}(G)|$
+  converges in distribution to the Poisson distribution with mean 
+  $$\frac{c^r}{|\mathrm{Aut}(G)|}\int_{(\R^d)^r}\prod_{(i,j)\in E(G)}H(x_i,x_j)\mu(\mathrm{d}x_1)\cdots\mu(\mathrm{d}x_r).
+  $$ 
+\end{thm}
+\begin{Proof}
+ Since $\lim_{\lambda \to \infty} \lambda c_\lambda^{e(G)/r} = c>0$
+ we have $\lambda c_\lambda^{e(G)/ ( r-1 )}\ll1$, 
+ hence by Proposition~\ref{dich1}-$(b)$ the leading
+ diagrams $\rho$ in the expansion \eqref{cum-eq} of $\kappa_n(N_G)$
+ are connected non-flat set partitions $\rho\in\Pi([n]\times[r])$
+ such that $|\rho|=r$ and $e(\rho_G)=e(G)$,
+ and the count of such diagrams is $|\mathrm{Aut}(G)|^{n-1}$.
+ Therefore, we have 
+    \begin{eqnarray*}
+      \lim_{\lambda\to\infty}\kappa_n(N_G) & = &
+      |\mathrm{Aut}(G)|^{n-1}
+      \lim_{\lambda\to\infty}\lambda^r 
+      \int_{(\R^d)^r}\prod_{(i,j)\in E(G)}
+      c_\lambda H(x_i,x_j)\mu(\mathrm{d}x_1)\cdots\mu(\mathrm{d}x_r)
+      \\
+      &=&|\mathrm{Aut}(G)|^{n-1} c^r\int_{(\R^d)^r}\prod_{(i,j)\in E(G)}H(x_i,x_j)\mu(\mathrm{d}x_1)\cdots\mu(\mathrm{d}x_r), \qquad n \geq 1, 
+    \end{eqnarray*}
+    and we conclude by Theorem~6.14 in \cite{JLR}. 
+\end{Proof}
+Furthermore, with the first moment method and the second moment method, i.e. 
+\begin{equation}\label{firstsecm}
+\frac{\E(X)^2}{\E(X^2)}\le\IP(X>0)\le \E(X).
+\end{equation}
+for any non-negative integer-valued random variable $X$, see \cite[Page~54]{JLR}, we consider the thresholds for subgraph containment. 
+\begin{thm}
+Let the above notation and assumptions prevail. If $a<k/r$, we have the following threshold phenomenon that 
+\begin{itemize}
+\item $\IP(N_G>0)\to0$, if $c_\lambda\ll\lambda^{-r/k}$,
+\item $\IP(N_G>0)\to1$, if $c_\lambda\gg\lambda^{-r/k}$.
+\end{itemize}
+\end{thm}
+\begin{Proof}
+First, we know that $G$ is strictly balanced, because $G$ is strongly balanced. Since $\E(X)\asymp\lambda^{r}c_\lambda^{k}$, if $c_\lambda\ll\lambda^{-r/k}$, we know that $\E(X)\to0.$ Meanwhile, we know that if $c_\lambda\gg\lambda^{-\frac{r-1}{k-a}}$, 
+$$\kappa_2(N_G)\asymp\lambda^{2r-1}c_{\lambda}^{2k-a},$$
+and if $c_\lambda\ll\lambda^{-\frac{r-1}{k-a}}$, 
+$$\kappa_2(N_G)\asymp\lambda^{r}c_{\lambda}^{k}.$$
+If $c_\lambda\gg\lambda^{-r/k}$, 
+\begin{equation}
+\frac{\E(X)^2}{\E(X^2)}\asymp\frac{\lambda^{2r}c_\lambda^{2k}}{\lambda^{2r}c_\lambda^{2k}+\kappa_2(N_G)}\asymp\frac1{1+(\lambda^{r}c_{\lambda}^k)^{-1}\vee(\lambda c_\lambda^{a})^{-1}}\to1.
+\end{equation}
+Using the first and the second method \eqref{firstsecm}, the result is rather direct.
+\end{Proof}
+
+\section{Random Graph With fixed endpoints}
+\noindent
+Now we consider the count $N^G_{y_1,\dots,y_m}$ of subgraph with fixed endpoints $y_1,\dots,y_m$ in the RCM $G_H(\eta\cup\{y_1,\dots,y_m\})$. To be more self-contained, we first recall some notation from \cite{LiuPrivault2}.\footnote{The following highlighted part is purely imported from the existing engineering preprint.}
+\textcolor{cyan}{
+Given $r\geq 2$ and $m\geq 1$, we 
+consider a connected graph $G=(V_G,E_G)$ with edge set $E_G$ and
+vertex sequence 
+$V_G=(v_1, \ldots ,v_r; e_1,\ldots , e_m)$, such that
+\begin{enumerate}[i)]
+\item the subgraph induced by $G$ on $\{v_1, \ldots ,v_r\}$ is connected, and 
+\item $e_1, \ldots ,e_m$ are not adjacent to each other in $G$. 
+\end{enumerate}
+In Definition~\ref{defgraph1},
+ to any graph $G$ and set partition $\rho\in\Pi ([n]\times[r])$
+we associate a graph $\rho_G$ whose vertices are the blocks of $\rho$.
+\begin{definition}
+  \label{defgraph1}
+  Given $\rho$ a partition of $[n]\times[r]$
+  and $G=(V_G,E_G)$ a connected graph 
+  on $V_G=(v_1, \ldots ,v_r; e_1,\ldots , e_m)$, 
+  we let $\rho_G$ denote the graph 
+  % from $n\times r + m$ nodes denoted respectively by $(i,j) \in [n] \times [r]$, and $(j) \in [m]$,
+  constructed as follows on $[m] \cup [n]\times [r]$:
+\begin{enumerate}[i)]  
+\item for all $j_1, j_2\in [r]$, $j_1\not= j_2$, and $i\in [n]$, 
+ an edge links $(i,j_1)$ to $(i,j_2)$
+ iff $\{v_{j_1},v_{j_2}\}\in E_G$. 
+\item for all $(j,k)\in [r]\times [m]$ and $i\in [n]$, an edge
+ links $(k)$ to $(i,j)$ iff $\{v_j,e_k\}\in E_G$; 
+\item for all $i_1,i_2\in [n]$
+ and $j_1,j_2\in [r]$,
+ merge any two nodes $(i_1,j_1)$ and $(i_2,j_2)$ 
+ if they belong to a same block in $\rho$;  
+\item eliminating any redundant edges created by the above construction.
+\end{enumerate}
+\end{definition}
+\noindent
+If $\rho\in\Pi ([n]\times[r])$
+takes the form $\rho = \{ b_1,\ldots , b_{|\rho |}\}$, 
+the graph $\rho_G$ forms a connected graph with
+$|\rho | + m$ vertices, and we reindex the set of vertices $V_{\rho_G}$
+of $\rho_G$  
+as $V_{\rho_G}=[|\rho | + m ]$ according to the lexicographic order
+on $\inte \times \inte$, 
+followed by the remaining $m$ single-digit vertices, 
+indexed as $\{|\rho |+1,\ldots , |\rho | +m\}$,
+see Figure~\ref{fig:diagram1}-$b)$
+in which we have $|\rho | =9$, $m = 2$, and $V_{\rho_G}=(1,\dots ,9;10, 11)$. 
+\begin{definition}
+    Given $m$ fixed points $y_1 , \ldots,y_m \in \R^d$,
+    for a.s. $\eta$ we let $N_{y_1,\ldots , y_m}^G$ denote the count of subgraphs
+   in $G_H (\eta \cup \{y_1,\ldots , y_m \} )$
+   that are isomorphic to $G=(V_G,E_G)$ in the sense that 
+   there exists a (random) injection
+   from $V_G$ into $\eta \cup \{y_1,\ldots , y_m \}$
+   which is one-to-one from $\{e_1,\ldots , e_m\}$ to $\{y_1,\ldots , y_m\}$, 
+   and preserves the graph structure of $G$. 
+  \end{definition}
+  \noindent
+   According to Definition~\ref{fjkl}, we express $N_{y_1,\ldots , y_m}^G$ as  
+  \begin{equation}
+  \nonumber
+    N_{y_1,\ldots , y_m}^G=\sum_{(x_1, \ldots ,x_r)\in\eta^{r}}f_{y_1,\ldots , y_m} (x_1, \ldots ,x_r), 
+  \end{equation}
+  where the random
+  function $f:(\real^d)^r \to \{0,1\}$ defined as 
+  \begin{equation}
+  \nonumber
+  f_{y_1,\ldots , y_m} (x_1, \ldots ,x_r):=
+  \prod_{
+    \substack{
+      1 \leq i \leq r
+      \\
+      1 \leq j \leq m
+      \\ \{v_i,e_j\}\in E_G }
+  }
+  \bone_{\{y_j\leftrightarrow x_i\}} 
+  \prod_{\substack{ 1 \leq k,l \leq r
+      \\ \{v_\ell,v_k\}\in E_G}}\bone_{\{x_\ell\leftrightarrow x_k\}},
+  \qquad
+   x_1,\ldots , x_r \in \R^d, 
+  \end{equation}
+  is independent of the Poisson point process $\eta$,
+   and $\bone_{\{x\leftrightarrow y\}}=1$ if and only if
+  $x\neq y$ and $x,y\in \real^d$ are connected in the
+   random-connection model 
+   $G_H (\eta \cup \{y_1, \ldots ,y_m\})$.
+   \begin{definition}
+    For $\rho\in\Pi ([n]\times[r])$ of the form
+    $\rho = \{ b_1,\ldots , b_{|\rho |}\}$ 
+    and $j \in [m]$, we let 
+  \begin{equation}
+  \nonumber
+      {\cal A}^\rho_j:=\{ k \in [ |\rho | ] \ : \ \exists (s,i)\in b_k ~\mathrm{s.t.}~
+      (v_i,e_j) \in E_G % , \ s\in [n], \ i\in [r]
+      \} 
+  \end{equation} 
+  denote the neighborhood of the vertex $(|\rho | + j)$ in $\rho_G$,
+  $j=1,\ldots , m$.
+   \end{definition}
+   \begin{prop}
+    \label{mom-cumfor}
+     The moments and cumulants of $N_{y_1,\ldots , y_m}^G$ admit
+     the following expressions: 
+    $$
+      \E_\lambda \big[\big(N_{y_1,\ldots , y_m}^G\big)^n\big]=
+      \sum_{\substack{\rho\in\Pi ([n]\times[r])
+          \\\rho\wedge\pi=\widehat{0}} \atop {\rm (non-flat)}}
+      \lambda^{|\rho |}
+      \int_{(\R^d)^{|\rho|}}\prod_{\substack{ % 1 \leq i \leq |\rho| \\
+          1 \leq j \leq m
+          \\ i\in {\cal A}^\rho_j}}
+        H(x_i,y_j)
+        \ \prod_{
+          \substack{1 \leq k , \ell \le|\rho|
+            \\
+            \{ k , \ell \}\in E_{\rho_G} 
+        }}H(x_\ell,x_k)\mu ( \mathrm{d}x_1 ) \cdots \mu ( \mathrm{d}x_{|\rho|}),
+        $$
+        and
+        \begin{equation}
+          \label{cumulant-diagram1}
+        \kappa_n\big(N_{y_1,\ldots , y_m}^G\big)=
+        \sum_{\substack{\rho\in\Pi_{\widehat{1}} ([n]\times[r])
+            \\\rho\wedge\pi=\widehat{0}} \atop {\rm (non-flat \ \! connected)}}
+      \lambda^{|\rho |}
+      \int_{(\R^d)^{|\rho|}}\prod_{
+        \substack{%       1 \leq i \leq |\rho| \\
+        1 \leq j \leq m
+          \\
+        i\in {\cal A}^\rho_j}}  H(x_i,y_j)
+      \ \prod_{\substack{
+          1\leq k , \ell \le|\rho|
+          \\
+          \{ k , \ell \}\in E_{\rho_G} }}H(x_\ell,x_k)\mu ( \mathrm{d}x_1)
+      \cdots \mu ( \mathrm{d}x_{|\rho|} ).
+    \end{equation} 
+    \end{prop}
+}
+In the sequel we make the following assumption on measurable and symmetric 
+ connection function $H:\R^d\times\R^d\to[0,1]$,
+  where we let $H(x):=H(0,x)$, $x\in \real^d$. 
+ \begin{assumption}
+  \label{measurability1} 
+ We assume that $H$ is translation invariant, i.e. $H(x,y)=H(0,y-x)$ for all $x,y\in\R^d$, and that 
+\begin{equation}
+  \label{integrability-1}
+0<\kappa_H:=\int_{\R^d}H(x)\mathrm{d}x<\infty.
+\end{equation}
+\end{assumption}
+It has been shown in \cite{LiuPrivault} that the Rayleigh connection function $H(x,y):=e^{-\beta\|x-y\|^2}$, for some $\beta>0$, satisfies Assumption~\ref{measurability1}. 
+ In this section, we replace $H(x,y)$ with
+$$
+H_\lambda (x,y) : = c_\lambda H(x,y),
+\qquad x, y \in \real^d,
+$$
+and investigate the asymptotic behaviour of the cumulants
+$\kappa_n\big(N_{y_1,\ldots , y_m}^G\big)$ in \eqref{cumulant-diagram1} when $c_\lambda\to0$ as the intensity $\lambda$ tends
+to infinity. Therefore, replacing $H$ in \eqref{cumulant-diagram1} with $H_\lambda$, we have
+\begin{equation}\label{cumulant-diagram2}
+  \kappa_n\big(N_{y_1,\ldots , y_m}^G\big)=
+        \sum_{\substack{\rho\in\Pi_{\widehat{1}} ([n]\times[r])
+            \\\rho\wedge\pi=\widehat{0}} \atop {\rm (non-flat \ \! connected)}}F(\rho),
+\end{equation}
+with 
+\begin{equation}\label{}
+  F(\rho):=\lambda^{v(\rho_G)-m}c_\lambda^{e(\rho_G)}
+  \int_{(\R^d)^{|\rho|}}\prod_{
+    \substack{%       1 \leq i \leq |\rho| \\
+    1 \leq j \leq m
+      \\
+    i\in {\cal A}^\rho_j}}  H(x_i,y_j)
+  \ \prod_{\substack{
+      1\leq k , \ell \le|\rho|
+      \\
+      \{ k , \ell \}\in E_{\rho_G} }}H(x_\ell,x_k)\mu ( \mathrm{d}x_1)
+  \cdots \mu ( \mathrm{d}x_{|\rho|} ).
+\end{equation}
+For any $i=1, \ldots ,r$, let 
+\begin{equation}\label{neighborhood1}
+  A_i :=\{j\in [m] \ : \ \{v_i,e_j\}\in E_G\},
+\end{equation}
+and we also denote 
+\begin{equation}
+  a:=\max\{|A_i|:i=1,\dots,r\}.
+\end{equation}
+In analogue to Definition~\ref{xyplot}, we define $\Sigma_n(G)$ for graph with endpoints as follows, with abuse of notation. 
+\begin{definition}\label{xyplot2}
+  For $n\ge2$, we denote 
+  \begin{equation*}
+        \Sigma_n(G):=\{(nr+m-v(\rho_G),ne(G)-e(\rho_G)) \ : \ \rho_G\in
+            {\rm CNF}_G(n,r)
+            \} \subseteq \inte\times \inte.
+    \end{equation*}
+\end{definition}
+We also note that the upper boundary $\widehat{\Sigma}_n(G)$ of the convex hull of $\Sigma_n(G)$ starts at $(n-1,(n-1)a)$ and ends at $((n-1)r,(n-1)e(G))$. And we say that a diagram $\rho_G\in {\rm CNF}_G(n,r)$ lies on the upper boundary $\widehat{\Sigma}_n(G)$ if the point $(nv(G)-v(\rho_G),ne(G)-e(\rho_G))$ does. A diagram $\rho_G\in{\rm CNF}_G(n,r)$ is said to be a leading diagram if 
+$$\kappa_n\big(N_{y_1,\ldots , y_m}^G\big)=\Theta\big(\lambda^{v(\rho_G)-m}c_\lambda^{e(\rho_G)}\big).$$
+With a similar argument as in Lemma~\ref{lm:slope}, we can show that a diagram $\rho_G\in{\rm CNF}_G(n,r)$ is a leading diagram for some $c_\lambda$ if and only if it lies on the upper boundary $\widehat{\Sigma}_n(G)$. 
+
+\begin{prop}\label{lm:slope2}
+  Let $G$ be a connected graph with $r+m$ vertices, $r\ge2$ and $m\ge0$. Assume that $\lim_{\lambda \to \infty} c_\lambda =0$, and further suppse that the upper boundary $\widehat{\Sigma}_n(G)$ is a line segment between $(n-1,(n-1)a)$ and $((n-1)r,(n-1)e(G))$. 
+  \begin{enumerate}[a)]
+    \item If $\lambda c_\lambda^{[e(G)-a]/ ( r-1 )}\gg1$, we have
+  \begin{equation} 
+    \kappa_n\big(N_{y_1,\ldots , y_m}^G\big)=\Theta\big(\lambda^{(r-1)n+1}c_\lambda^{ne(G)-(n-1)a}\big). 
+  \end{equation}
+  \item If $\lambda c_\lambda^{[e(G)-a]/ ( r-1 )}\ll1$, we find 
+  \begin{equation}
+    \kappa_n\big(N_{y_1,\ldots , y_m}^G\big)=\Theta\big(\lambda^{r}c_\lambda^{e(G)}\big).
+  \end{equation}
+  \item If $\lambda c_\lambda^{[e(G)-a]/ ( r-1 )}\asymp 1$, we have
+  \begin{equation}
+    \kappa_n\big(N_{y_1,\ldots , y_m}^G\big)=\Theta\big(\lambda c_{\lambda}^a\big).  
+  \end{equation}
+  \end{enumerate} 
+\end{prop}
+\begin{Proof}
+The proof is in the same spirit as the proof of Proposition~\ref{dich1}. Without loss of generality, we write 
+$$
+\widehat{\Sigma}_n(G)=\{(x_0,z_0),(x_1,z_1),\dots,(x_\ell,z_\ell)\},
+$$
+with $x_0=n-1<x_1<\cdots<x_\ell=(n-1)r.$ 
+According to Definition~\ref{xyplot2}, we can find corresponding $\rho_{i,G}\in{\rm CNF}_G(n,r)$ such that 
+$$
+v(\rho_{G,i})=nr+m-x_i,~~~e(\rho_{G,i})=ne(G)-z_i.
+$$
+Also, we write the (connected non-flat) set partition asscociated with $\rho_{i,G}$ as $\rho_i$, and recalling from \eqref{cumulant-diagram2}, we can see that each $\rho_i$ contributes 
+\begin{equation}
+  F(\rho_i)=\Theta\big(\lambda^{v(\rho_{i,G})-m}c_\lambda^{e(\rho_{i,G})}\big)=\Theta\big(\lambda^{nr-x_i}c_\lambda^{ne(G)-z_i}\big).
+\end{equation}
+Because the upper boundary is a line segment with endpoints $(n-1,(n-1)a)$ and $((n-1)r,(n-1)e(G))$, the slope of this line segment is $[e(G)-a]/(r-1)$. Hence, for any $0\le i<j\le \ell$, $x_i<x_j$, i.e. $v(\rho_{i,G})>v(\rho_{j,G})$
+\begin{eqnarray*}
+  \frac{F(\rho_i)}{F(\rho_j)}&\asymp&\frac{\lambda^{v(\rho_{i,G})-m}c_\lambda^{e(\rho_{i,G})}}{\lambda^{v(\rho_{j,G})-m}c_\lambda^{e(\rho_{j,G})}}\\
+  &=&\lambda^{v(\rho_{i,G})-v(\rho_{j,G})}c_\lambda^{e(\rho_{i,G})-e(\rho_{j,G})}\\
+  &=&\left(\lambda c_\lambda^{[e(\rho_{i,G})-e(\rho_{j,G})]/[v(\rho_{i,G})-v(\rho_{j,G})]}\right)^{v(\rho_{i,G})-v(\rho_{j,G})}\\
+  &=&\left(\lambda c_\lambda^{[e(G)-a]/(r-1)}\right)^{v(\rho_{i,G})-v(\rho_{j,G})}.
+\end{eqnarray*}
+Therefore, when $\lambda c_\lambda^{[e(G)-a]/ ( r-1 )}\gg1$, $F(\rho_0)\gg F(\rho_j)$ for $j=1,\dots,\ell$. Due to the fact that the leading diagram has to be one that lies on the upper boundary, we further have
+\begin{equation}
+  \kappa_n\big(N_{y_1,\ldots , y_m}^G\big)=\Theta\big(\lambda^{v(\rho_{0,G})-m}c_\lambda^{e(\rho_{0,G})}\big)=\Theta\big(\lambda^{nr-x_0}c_\lambda^{ne(G)-z_0}\big)=\Theta\big(\lambda^{(r-1)n+1}c_\lambda^{ne(G)-(n-1)a}\big).
+\end{equation}
+When $\lambda c_\lambda^{[e(G)-a]/ ( r-1 )}\ll1$, $F(\rho_j)\ll F(\rho_\ell)$ for $j=0,1,\dots, \ell-1$, and we further have
+\begin{equation}
+  \kappa_n\big(N_{y_1,\ldots , y_m}^G\big)=\Theta\big(\lambda^{v(\rho_{\ell,G})-m}c_\lambda^{e(\rho_{\ell,G})}\big)=\Theta\big(\lambda^{nr-x_\ell}c_\lambda^{ne(G)-z_\ell}\big)=\Theta\big(\lambda^{r}c_\lambda^{e(G)}\big).
+\end{equation}
+Moreover, when $\lambda c_\lambda^{[e(G)-a]/ ( r-1 )}\asymp1$, for any $0\le i<j\le \ell$, $F(\rho_i)\asymp F(\rho_j)$, and 
+\begin{equation}
+  \kappa_n\big(N_{y_1,\ldots , y_m}^G\big)=\Theta\big(\lambda^{r}c_\lambda^{e(G)}\big)=\Theta\big(\lambda c_\lambda^{a}\big).
+\end{equation}
+\end{Proof}
+
+% \begin{remark}
+%   When $m=0$, we can see through Proposition~\ref{dich1} the requirement that $G$ is strongly balanced and connected ensures the upper boundary $\widehat{\Sigma}_n(G)$ is a line segment.
+% \end{remark}
+
+A $k$-hop $P_k$ is a path with $k$ edges. Due to its simple structure, $k$-hop counts has wide applications in wireless communication, c.f. \cite{prkhp}. We can see that the $k$-hop count $N_{y}^{P_k}$, with one endpoint, and $N_{y_1,y_2}^{P_k}$, with two endpoints, both satisfy that the condition in Proposition~\ref{lm:slope2}, i.e. the upper boundary is a line segment. 
+
+\begin{example}
+  Let $N_{y}^{P_k}$ be the count of $k$-hop with one fixed endpoint $y\in\R^d$. We have 
+  \begin{eqnarray}
+    \kappa_n\big(N_{y}^{P_k}\big)=\left\{\begin{array}{ll}
+      \Theta\big((\lambda c_\lambda)^{(k-1)n+1}\big) & \ \mbox{if }\ \lambda c_\lambda\gg1,
+      \medskip
+      \\
+      \displaystyle
+\Theta\big(\lambda^{k}c_\lambda^{k}\big) & \ \mbox{if }\ \lambda c_\lambda\ll1,
+    \medskip
+    \\
+    \displaystyle
+    \Theta(1) & \ \mbox{if }\ \lambda c_\lambda\asymp1.
+    \end{array}
+    \right.
+  \end{eqnarray}
+\end{example}
+\begin{example}
+  Let $N_{y_1,y_2}^{P_k}$ be the count of $k$-hop with two fixed endpoint $y_1,y_2\in\R^d$. We have 
+  \begin{eqnarray}
+    \kappa_n\big(N_{y_1,y_2}^{P_k}\big)=\left\{\begin{array}{ll}
+      \Theta\big(\lambda^{(k-2)n+1}c_\lambda^{n(k-1)+1}\big) & \ \mbox{if }\ \lambda c_\lambda^{[k-1]/ ( k-2 )}\gg1,
+      \medskip
+      \\
+      \displaystyle
+\Theta\big(\lambda^{k-1}c_\lambda^{k}\big) & \ \mbox{if }\ \lambda c_\lambda^{[k-1]/ ( k-2 )}\ll1,
+    \medskip
+    \\
+    \displaystyle
+    \Theta(\lambda c_\lambda) & \ \mbox{if }\ \lambda c_\lambda^{[k-1]/ ( k-2 )}\asymp1.
+    \end{array}
+    \right.
+  \end{eqnarray}
+\end{example}
+
+Unlike the degenerate case, i.e. when $m=0$, the upper boundary $\widehat{\Sigma}_n(G)$ in general is much more complicated when $m>0$. %\textcolor{red}{It is difficult to find a reasonable condition on the ``density'' of graph $G$ to ensure that $\widehat{\Sigma}_n(G)$ is a segment.} 
+
+\begin{lemma}\label{lma:mbal}
+  Let $G$ be a connected graph with $r+m$ vertices. If $G$ satisfies that 
+  \begin{equation}\label{mbalanced}
+    \frac{e(H)-a}{v(H)-m-1}\le\frac{e(G)-a}{v(G)-m-1},\qquad H\subseteq G,~v(H)>m+1,
+  \end{equation} 
+  then the upper boundary $\widehat{\Sigma}_n(G)$ is a line segment. 
+\end{lemma}
+\begin{Proof}
+  To present the result in a compact form, we will first show that the requirement that the upper boundary $\widehat{\Sigma}_n(G)$ is a line segment is equivalent to 
+  \begin{equation}
+    \label{mbalineq}
+      \frac{e(G)-a}{v(G)-m-1}\le\frac{e(\rho_G)-a}{v(\rho_G)-m-1},
+      \qquad
+  \rho_G\in {\rm CNF}_G(n,r).
+    \end{equation}
+    Because the upper boundary $\widehat{\Sigma}_n(G)$ starts at $(x_0,z_0):=(n-1,(n-1)a)$ and ends at $(x_\ell,z_\ell):=((n-1)r,(n-1)e(G))$, the requirement that the upper boundary $\widehat{\Sigma}_n(G)$ is a line segment is equivalent to that for any $(x,z)\in\Sigma_n(G)$, 
+    \begin{equation}
+      \frac{z_\ell-z}{x_\ell-x}\ge\frac{z_\ell-z_0}{x_\ell-x_0}=\frac{e(G)-a}{r-1}.
+    \end{equation}
+    Considering the Definition~\ref{xyplot2}, we obtain that the requirement itself is further equivalent to for any $\rho_G\in {\rm CNF}_G(n,r)$, 
+    \begin{equation}
+      \frac{e(\rho_G)-e(G)}{v(\rho_G)-m-r}\ge \frac{e(G)-a}{r-1},
+    \end{equation}
+    and after reorganizing, the inequality above is equivalent to \eqref{mbalineq}. It remains to show that \eqref{mbalanced} ensures \eqref{mbalineq}. Similar with the proof of Lemma~\ref{lma:stronglybal}, we apply an induction argument to see this. When $n=1$, the claim is trivial as the only element in ${\rm CNF}_G(1,r)$ is isomorphic to $G$. \textcolor{red}{
+      Suppose now that \eqref{mbalineq} holds up to the rank $n\geq 1$.
+  Let $\rho$ be a non-flat connected partition on $[n+1]\times[r]$
+  with associated graph $\rho_G\in{\rm CNF}_G(n,r)$.
+  By Lemma~\ref{restrict-partition}, up to reordering
+  of $\{1,\ldots , n+1\}$ there exists 
+  $\widebar{\rho}_G\in {\rm CNF}_G(n,r)$
+  induced by $\rho_G$ on
+     $$
+     V(\widebar{\rho}_G):=
+     \big\{
+     b\in \rho \ : \ b \cap (\pi_1\cup \cdots \cup \pi_n) \not= \emptyset
+     \big\}. 
+     $$
+ Let 
+     $\widehat{\rho}_G\in
+     {\rm CNF}_G(1,r)$
+     denote the subgraph 
+  induced by $\rho_G$ on
+     $$
+     V(\widehat{\rho}_G):=
+     \big\{
+     b\in \rho \ : \ b \cap \pi_{n+1} \not= \emptyset
+     \big\}, 
+     $$
+     with
+     $\widehat{\rho}_G \simeq G$ because $\rho$ is non-flat, 
+     and let $H:=\widebar{\rho}_G\cap \widehat{\rho}_G$.
+     Since $H\subseteq \widehat{\rho}_G$, and $v(H)\ge m+1$
+     by \eqref{mbalanced} we have 
+       \begin{align*}
+  \frac{e(H)-a}{v(H)-m-1}\le\frac{e(G)-a}{v(G)-m-1}. 
+  \end{align*} 
+ Hence, by the induction hypothesis \eqref{mbalineq} applied at the rank $n$ to $\widebar{\rho}_G\in {\rm CNF}_G(n,r)$, we have 
+ \begin{align*}
+  \frac{e(\rho_G)-a}{v(\rho_G)-m-1}
+  & =
+  \frac{[e(\widebar{\rho}_G)-a]+[e(\widehat{\rho}_G)-a]-[e(H)-a]}{
+    v(\widebar{\rho}_G)+v(\widehat{\rho}_G)-v(H)-m-1}
+  \\
+  & =
+  \frac{[e(\widebar{\rho}_G)-a]+[e(G)-a]-[e(H)-a]}{v(\widebar{\rho}_G)+v(G)-v(H)-m-1}
+  \\
+           & \geq 
+  \frac{[v(\widebar{\rho}_G)-m-1]\frac{e(G)-a}{v(G)-m-1}  
+   +[e(G)-a]-[v(H)-m-1]\frac{e(G)-a}{v(G)-m-1}
+   }{
+    v(\widebar{\rho}_G)+v(G)-v(H)-m-1}
+  \\
+           & = 
+  \frac{e(G)-a}{v(G)-m-1}. 
+  \end{align*} 
+    }
+\end{Proof}
+\begin{remark}\label{special-case}
+  When $m=0$, the condition \eqref{mbalanced} coincides with the strongly balanced condition \eqref{strongbaldef}. When $m=1$ and $a=1$, the condition \eqref{mbalanced} is exactly the $K_2$-balanced condition \eqref{k2baldef}.
+\end{remark}
+\begin{remark}
+  Combining Remark~\ref{graph-example} and Remark~\ref{special-case}, we can see that when $m=a=1$, the claim in Proposition~\ref{lm:slope2} applies to trees, cycles and complete graphs.
+\end{remark}
+
+% \begin{lemma}
+% ~Suppose $G$ is a connected graph with $r+m$ vertices, $r\ge2$. Each point $(x,z)\in\widehat{\Sigma}_n(G)$, lying on the upper boundary, must be of the form
+% \begin{equation}
+%   x=i(n-1),
+% \end{equation} 
+% for some $1\le i\le r$. In other words, if $\rho_G\in{\rm CNF}_G(n,r)$ is a leading diagram for some $c_\lambda$, then the number of vertices must be of the form 
+% \begin{equation}
+%   v(\rho_G)=n(r-i)+i+m,
+% \end{equation}
+% for some $1\le i\le r$.
+% \end{lemma}
+
+\appendix
+
+\section{Convex hull code}
+\label{fjkldsf}
+\noindent  
+The following SageMath code determines the convex hull of $\Sigma_n(G)$ 
+and its upper boundary $\widehat{\Sigma}_n(G)$,
+see Figures~\ref{fig1}-\ref{fig2} and \ref{fig4}.
+
+\medskip
+\smallskip
+
+%colors linux
+\begin{lstlisting}
+def partitions(points):
+    if len(points) == 1:
+        yield [ points ]
+        return
+    first = points[0]
+    for smaller in partitions(points[1:]):
+        for m, subset in enumerate(smaller):
+            yield smaller[:m] + [[ first ] + subset]  + smaller[m+1:]
+        yield [ [ first ] ] + smaller
+def nonflat(partition, r):
+    return all(len(set((x - 1) // r for x in subset)) == len(subset) for subset in partition)
+def connected(partition,n,r):
+    q = []; c = 0
+    if n  == 1: return all([len(j)==1 for j in partition])
+    for j in partition:
+        jk = list(set(map(lambda x: (x-1)//r,j)))
+        if(len(jk)>1):            
+            if c == 0:
+                q = jk; c += 1
+            elif(set(q) & set(jk)):
+                d=[y for y in (q+jk) if y not in q]
+                q = q + d
+    return n == len(set(q))
+def connectednonflat(n,r):
+    points = list(range(1,n*r+1))
+    randd = []
+    for m, p in enumerate(partitions(points), 1):
+        randd.append(sorted(p))
+    for rou in range(r,(r-1)*n+2):    
+        rs = [d for d in randd if (nonflat(d,r) and len(d)==rou)]
+        rss = [e for e in rs if connected(e,n,r)]
+        print("Connected non-flat partitions with",rou,"blocks:",len(rss))
+    cnfp = [e for e in randd if (connected(e,n,r) and nonflat(e,r))]
+    print("Connected non-flat set partitions:",len(cnfp))
+    return cnfp
+def graphs(G,setpartition,n):
+    r=len(set(flatten(G)));rhoG = []
+    for j in range(n):
+        for hop in G: rhoG.append([r*j+hop[0],r*j+hop[1]])
+    for i in setpartition:
+        if(len(i)>1):
+            b = []
+            for j in rhoG:
+                b.append([i[0] if ele in i else ele for ele in j])
+            rhoG = b
+    for i in rhoG: i.sort()
+    return rhoG
+def convexhull(n,G):
+    r=len(set(flatten(G)));
+    x,y=var("x,y")
+    cnfp=connectednonflat(n,r)
+    L=[]
+    for setpartition in cnfp: 
+        rhoG=graphs(G,setpartition,n)
+        edgesrhoG = [i for n, i in enumerate(rhoG) if i not in rhoG[:n]]
+        vertrhoG = set(flatten(edgesrhoG));
+        L.append((n*r-len(vertrhoG),n*len(G)-len(edgesrhoG)))
+    return sorted(set(L))
+\end{lstlisting}
+
+\footnotesize
+
+\begin{thebibliography}{alpha}
+%\bibliographystyle{alpha}
+%\bibliographystyle{plainnat}
+
+\bibitem[BR12]{balakrishnan}
+R.~Balakrishnan and K.~Ranganathan.
+\newblock {\em A textbook of graph theory}.
+\newblock Universitext. Springer, New York, second edition, 2012.
+
+\bibitem[JLR11]{JLR} 
+S.~Janson, T.~ \L uczak, and Ruci\'{n}ski. 
+\newblock {\em Random graphs}, John Wiley \& Sons, 2011.
+
+\bibitem[LP23a]{LiuPrivault}
+Q.~Liu and N.~Privault.
+\newblock Normal approximation of subgraph counts in the random-connection
+  model.
+\newblock Preprint arXiv:2301.12145, 32 pages, 2023.
+
+\bibitem[LP23b]{LiuPrivault2}
+Q.~Liu and N.~Privault.
+\newblock Subgraph counting with fixed endpoints in the random-connection model.
+\newblock in preparion, 2023.
+
+\bibitem[LR92]{luczak} 
+T.~\L uczak, and A Ruci\'nski. 
+\newblock Convex hulls of dense balanced graphs. 
+\newblock {\em J. Comput. Appl. Math.}, 41: 205-213, 1992.
+
+\bibitem[Pri19]{prkhp}
+N.~Privault.
+\newblock Moments of $k$-hop counts in the random-connection model.
+\newblock {\em J. Appl. Probab.}, 56(4):1106--1121, 2019.
+
+\bibitem[Ruc88]{ruci88}
+A.~Ruci\'nski.
+\newblock When are small subgraphs of a random graph normally distributed?. 
+\newblock{\em Probab. Theory Related Fields}, 78(1), 1--10, 1988.
+\end{thebibliography}
+\end{document}
+
