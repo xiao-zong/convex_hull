@@ -9,14 +9,9 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{accents} 
-
 \usepackage{dsfont}
-
 \usepackage{stackengine}
-
-\usepackage{accents} 
-
-%\let\Horig\H
+\let\Horig\H
 
 \usepackage{tikz}
 \usetikzlibrary{automata,topaths}
@@ -29,7 +24,7 @@
 \usepackage{siunitx}
 \sisetup{output-exponent-marker=\ensuremath{\mathrm{e}}}
 
-\usepackage{color} 
+\usepackage{color,cite} 
 \definecolor{lightblue}{rgb}{0,0.2,0.5}
 \usepackage[colorlinks=true, urlcolor=lightblue,linkcolor=lightblue, citecolor=lightblue]{hyperref}
 \usepackage{ucs}
@@ -283,7 +278,7 @@ shadings]
 \begin{document}
 \title{
 \huge
- Subgraph counts in random-connection model with endpoints
+ Phrase transitions of subgraph counts in random-connection model with endpoints
 } 
 
 \author{
@@ -311,13 +306,12 @@ Nanyang Technological University
 \vspace{-0.5cm}
 
 \begin{abstract} 
-This is a short note for \cite{LiuPrivault}. The notation and results considered here are supposed to be consistent and self-contained in \cite{LiuPrivault}.
+
 \end{abstract}
 \noindent\emph{Keywords}:~
 Random-connection model, 
 subgraph count,
-normal approximation,
-Kolmogorov distance,
+Phrase transition,
 cumulant method,
 Poisson point process,
 random graphs.
@@ -333,9 +327,18 @@ random graphs.
  
 \baselineskip0.7cm
 
+\section{Introduction}
+In a random geometric graph, the vertex set is a point process and each pair of vertices would be connected by an edge if and only if the distance between the two vertices are smaller than a fixed threhold. 
+A random-connection model (RCM) is a random graph whose vertex set is a point process $\Xi$ on $\R^d$, $d\ge1$, and each pair of vertices are randomly connected with a location-dependent probability, which is usually given by a connection function $H:\R^d\times \R^d\to[0,1]$. In particular, when the connection function $H$ is a function of the distance between pairs of points of $\Xi$, i.e. $H(x,y):=\phi(\|x-y\|)$ for some measurable function $\phi:\R_+\to[0,1]$, the resulting graph is also known as a {\it soft} random geometric graph, c.f. \cite{penrose16,LNS21}. 
+
+The random-connection model can be regarded as a generalisation of several classic random graph. For instance, when the connection function $H$ is given by an indicator function, of the form $\bone_{\{\|x-y\|\le r\}}$, for some $r>0$, the random-connection model becomes a random geometric graph, c.f. the monograph \cite{penrosebk}. When taking the underlying point process $\Xi$ to be a Binomial point process $\Xi_n$, meanwhile the connection function $H(x,y)\equiv p$ for some $p\in(0,1)$, the resulting graph is the Erd{\H o}s-R\'enyi random graph, c.f. \cite{gilbert59,ER}. Another special case of random-connection model is so-called graphon based random graph, c.f. \cite{zhang22,bhattacharya23}, when the underlying point process is a Binomial point process $\Xi_n$ on $[0,1]$ with a connection function, also known as a graphon, $W:[0,1]\times[0,1]\to[0,1]$.
+
+In a recent preprint \cite{LiuPrivault23}, normal approximation for the subgraph counts in the random-connection model with convergence rates under the Kolmogorov distance is established through an ingenious diagram language and combinatorial arguments. 
+ 
+
 \section{Preliminaries and notations}
 \noindent
-Let $\Xi$ be a Poisson point process on $\R^d$, $d\geq 1$, with intensity measure $\Lambda_\lambda$, where $\lambda > 0$. The random-connection model (RCM) built on $\Xi$, denoted by $G_{H_\lambda}(\Xi )$, is a random graph in which any two distinct vertices $x,y\in\eta$ are independently connected by an edge with a probability $H(x,y)$ that depends only on the locations of $x$ and $y$, where $H:\R^d\times \R^d\to[0,1]$ is a symmetric measurable connection function. 
+Let $\Xi$ be a Poisson point process on $\R^d$, $d\geq 1$, with intensity measure $\Lambda_\lambda$, where $\lambda > 0$. The random-connection model built on $\Xi$, denoted by $G_{H_\lambda}(\Xi )$, is a random graph in which any two distinct vertices $x,y\in\eta$ are independently connected by an edge with a probability $H(x,y)$ that depends only on the locations of $x$ and $y$, where $H:\R^d\times \R^d\to[0,1]$ is a symmetric measurable connection function. 
 \subsection*{Graph theory}
 \noindent
 In what follows, given any two graphs $G_1,G_2$
@@ -350,8 +353,8 @@ $$
 $$
 the set of connected graphs whose vertex sets are non-flat partitions of
  $[n]\times [r]$, $n, r\geq 1$. 
- Next, we recall some related concepts from random graph theory, see \cite{luczak,JLR}.  
-\begin{definition} \cite[pages~64-65]{JLR}
+ Next, we recall some related concepts from random graph theory, see \cite{luczakrucinski92,JLR11}.  
+\begin{definition} \cite[pages~64-65]{JLR11}
   \begin{enumerate}[1)]
     \item
     A graph $G$ is balanced if 
@@ -387,7 +390,7 @@ and strictly $K_2$-balanced if
 \end{enumerate}
 \end{definition}
 \begin{remark}\label{graph-example}
- As pointed out in \cite{luczak}, strongly balanced graphs are strictly balanced. Also, trees are $K_2$-balanced but not strictly $K_2$-balanced. Cycles and complete graphs are strictly $K_2$-balanced. Moreover, every $K_2$-balanced graph except unions of disjoint edges is strongly balanced.
+ As pointed out in \cite{luczakrucinski92}, strongly balanced graphs are strictly balanced. Also, trees are $K_2$-balanced but not strictly $K_2$-balanced. Cycles and complete graphs are strictly $K_2$-balanced. Moreover, every $K_2$-balanced graph except unions of disjoint edges is strongly balanced.
 \end{remark}  
 \begin{lemma}
   \label{restrict-partition}
@@ -1035,7 +1038,7 @@ $\theta^-_{\rho_G} \geq \theta^+_{\rho_G}$.
 \end{equation}
 % if $\lim_{\lambda \to \infty} c_\lambda =0$. 
 % Leading diagrams owes their name to the fact that they correspond to the leading terms of the cumulant expression \eqref{cum-eq}.
-% The terminology is extending from random graph theory, \cite{luczak,JLR}, where it is defined only for variance term, i.e. when $n=2$.
+% The terminology is extending from random graph theory, \cite{luczakrucinski92,JLR}, where it is defined only for variance term, i.e. when $n=2$.
  In the next lemma, we identify leading diagrams
  by a convexity argument. 
 % by plotting the points that represent a `loss' caused by merging vertices and gluing edges when generating diagram $\rho_G$.
@@ -1502,13 +1505,13 @@ In the sequel, we let
       \\
       &=&|\mathrm{Aut}(G)|^{n-1} c^r\int_{(\R^d)^r}\prod_{(i,j)\in E(G)}H(x_i,x_j)\mu(\mathrm{d}x_1)\cdots\mu(\mathrm{d}x_r), \qquad n \geq 1, 
     \end{eqnarray*}
-    and we conclude by Theorem~6.14 in \cite{JLR}. 
+    and we conclude by Theorem~6.14 in \cite{JLR11}. 
 \end{Proof}
 Furthermore, with the first moment method and the second moment method, i.e. 
 \begin{equation}\label{firstsecm}
 \frac{\E(X)^2}{\E(X^2)}\le\IP(X>0)\le \E(X).
 \end{equation}
-for any non-negative integer-valued random variable $X$, see \cite[Page~54]{JLR}, we consider the thresholds for subgraph containment. 
+for any non-negative integer-valued random variable $X$, see \cite[Page~54]{JLR11}, we consider the thresholds for subgraph containment. 
 \begin{thm}
 Let the above notation and assumptions prevail. If $a<k/r$, we have the following threshold phenomenon that 
 \begin{itemize}
@@ -1678,7 +1681,7 @@ In the sequel we make the following assumption on measurable and symmetric
 0<\kappa_H:=\int_{\R^d}H(x)\mathrm{d}x<\infty.
 \end{equation}
 \end{assumption}
-It has been shown in \cite{LiuPrivault} that the Rayleigh connection function $H(x,y):=e^{-\beta\|x-y\|^2}$, for some $\beta>0$, satisfies Assumption~\ref{measurability1}. 
+It has been shown in \cite{LiuPrivault23} that the Rayleigh connection function $H(x,y):=e^{-\beta\|x-y\|^2}$, for some $\beta>0$, satisfies Assumption~\ref{measurability1}. 
  In this section, we replace $H(x,y)$ with
 $$
 H_\lambda (x,y) : = c_\lambda H(x,y),
@@ -1783,7 +1786,7 @@ Moreover, when $\lambda c_\lambda^{[e(G)-a]/ ( r-1 )}\asymp1$, for any $0\le i<j
 %   When $m=0$, we can see through Proposition~\ref{dich1} the requirement that $G$ is strongly balanced and connected ensures the upper boundary $\widehat{\Sigma}_n(G)$ is a line segment.
 % \end{remark}
 
-A $k$-hop $P_k$ is a path with $k$ edges. Due to its simple structure, $k$-hop counts has wide applications in wireless communication, c.f. \cite{prkhp}. We can see that the $k$-hop count $N_{y}^{P_k}$, with one endpoint, and $N_{y_1,y_2}^{P_k}$, with two endpoints, both satisfy that the condition in Proposition~\ref{lm:slope2}, i.e. the upper boundary is a line segment. 
+A $k$-hop $P_k$ is a path with $k$ edges. Due to its simple structure, $k$-hop counts has wide applications in wireless communication, c.f. \cite{privault19}. We can see that the $k$-hop count $N_{y}^{P_k}$, with one endpoint, and $N_{y_1,y_2}^{P_k}$, with two endpoints, both satisfy that the condition in Proposition~\ref{lm:slope2}, i.e. the upper boundary is a line segment. 
 
 \begin{example}
   Let $N_{y}^{P_k}$ be the count of $k$-hop with one fixed endpoint $y\in\R^d$. We have 
@@ -1993,45 +1996,46 @@ def convexhull(n,G):
 \end{lstlisting}
 
 \footnotesize
+\bibliographystyle{apalike}
+\bibliography{ref}
+% \begin{thebibliography}{apalike}
 
-\begin{thebibliography}{alpha}
-%\bibliographystyle{alpha}
-%\bibliographystyle{plainnat}
+% \bibliographystyle{plainnat}
 
-\bibitem[BR12]{balakrishnan}
-R.~Balakrishnan and K.~Ranganathan.
-\newblock {\em A textbook of graph theory}.
-\newblock Universitext. Springer, New York, second edition, 2012.
+% \bibitem[BR12]{balakrishnan}
+% R.~Balakrishnan and K.~Ranganathan.
+% \newblock {\em A textbook of graph theory}.
+% \newblock Universitext. Springer, New York, second edition, 2012.
 
-\bibitem[JLR11]{JLR} 
-S.~Janson, T.~ \L uczak, and Ruci\'{n}ski. 
-\newblock {\em Random graphs}, John Wiley \& Sons, 2011.
+% \bibitem[JLR11]{JLR} 
+% S.~Janson, T.~ \L uczak, and Ruci\'{n}ski. 
+% \newblock {\em Random graphs}, John Wiley \& Sons, 2011.
 
-\bibitem[LP23a]{LiuPrivault}
-Q.~Liu and N.~Privault.
-\newblock Normal approximation of subgraph counts in the random-connection
-  model.
-\newblock Preprint arXiv:2301.12145, 32 pages, 2023.
+% \bibitem[LP23a]{LiuPrivault}
+% Q.~Liu and N.~Privault.
+% \newblock Normal approximation of subgraph counts in the random-connection
+%   model.
+% \newblock Preprint arXiv:2301.12145, 32 pages, 2023.
 
-\bibitem[LP23b]{LiuPrivault2}
-Q.~Liu and N.~Privault.
-\newblock Subgraph counting with fixed endpoints in the random-connection model.
-\newblock in preparion, 2023.
+% \bibitem[LP23b]{LiuPrivault2}
+% Q.~Liu and N.~Privault.
+% \newblock Subgraph counting with fixed endpoints in the random-connection model.
+% \newblock in preparion, 2023.
 
-\bibitem[LR92]{luczak} 
-T.~\L uczak, and A Ruci\'nski. 
-\newblock Convex hulls of dense balanced graphs. 
-\newblock {\em J. Comput. Appl. Math.}, 41: 205-213, 1992.
+% \bibitem[LR92]{luczakrucinski92} 
+% T.~\L uczak, and A Ruci\'nski. 
+% \newblock Convex hulls of dense balanced graphs. 
+% \newblock {\em J. Comput. Appl. Math.}, 41: 205-213, 1992.
 
-\bibitem[Pri19]{prkhp}
-N.~Privault.
-\newblock Moments of $k$-hop counts in the random-connection model.
-\newblock {\em J. Appl. Probab.}, 56(4):1106--1121, 2019.
+% \bibitem[Pri19]{prkhp}
+% N.~Privault.
+% \newblock Moments of $k$-hop counts in the random-connection model.
+% \newblock {\em J. Appl. Probab.}, 56(4):1106--1121, 2019.
 
-\bibitem[Ruc88]{ruci88}
-A.~Ruci\'nski.
-\newblock When are small subgraphs of a random graph normally distributed?. 
-\newblock{\em Probab. Theory Related Fields}, 78(1), 1--10, 1988.
-\end{thebibliography}
+% \bibitem[Ruc88]{ruci88}
+% A.~Ruci\'nski.
+% \newblock When are small subgraphs of a random graph normally distributed?. 
+% \newblock{\em Probab. Theory Related Fields}, 78(1), 1--10, 1988.
+% \end{thebibliography}
 \end{document}
 
