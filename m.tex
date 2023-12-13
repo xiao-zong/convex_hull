@@ -329,18 +329,46 @@ random graphs.
 
 \section{Introduction}
 In a random geometric graph, the vertex set is a point process and each pair of vertices would be connected by an edge if and only if the distance between the two vertices are smaller than a fixed threhold. 
-A random-connection model (RCM) is a random graph whose vertex set is a point process $\Xi$ on $\R^d$, $d\ge1$, and each pair of vertices are randomly connected with a location-dependent probability, which is usually given by a connection function $H:\R^d\times \R^d\to[0,1]$. In particular, when the connection function $H$ is a function of the distance between pairs of points of $\Xi$, i.e. $H(x,y):=\phi(\|x-y\|)$ for some measurable function $\phi:\R_+\to[0,1]$, the resulting graph is also known as a {\it soft} random geometric graph, c.f. \cite{penrose16,LNS21}. 
+A random-connection model (RCM) is a random graph whose vertex set is a point process $\xi$ on $\R^d$, $d\ge1$, and each pair of vertices are randomly connected with a location-dependent probability, which is usually given by a connection function $H:\R^d\times \R^d\to[0,1]$. In particular, when the connection function $H$ is a function of the distance between pairs of points of $\xi$, i.e. $H(x,y):=\phi(\|x-y\|)$ for some measurable function $\phi:\R_+\to[0,1]$, the resulting graph is also known as a {\it soft} random geometric graph, c.f. \cite{penrose16,LNS21}. 
 
-The random-connection model can be regarded as a generalisation of several classic random graph. For instance, when the connection function $H$ is given by an indicator function, of the form $\bone_{\{\|x-y\|\le r\}}$, for some $r>0$, the random-connection model becomes a random geometric graph, c.f. the monograph \cite{penrosebk}. When taking the underlying point process $\Xi$ to be a Binomial point process $\Xi_n$, meanwhile the connection function $H(x,y)\equiv p$ for some $p\in(0,1)$, the resulting graph is the Erd{\H o}s-R\'enyi random graph, c.f. \cite{gilbert59,ER}. Another special case of random-connection model is so-called graphon based random graph, c.f. \cite{zhang22,bhattacharya23}, when the underlying point process is a Binomial point process $\Xi_n$ on $[0,1]$ with a connection function, also known as a graphon, $W:[0,1]\times[0,1]\to[0,1]$.
+The random-connection model can be regarded as a generalisation of several classic random graph. For instance, when the connection function $H$ is given by an indicator function, of the form $\bone_{\{\|x-y\|\le r\}}$, for some $r>0$, the random-connection model becomes a random geometric graph, c.f. the monograph \cite{penrosebk}. When taking the underlying point process $\xi$ to be a Binomial point process $\xi_n$, meanwhile the connection function $H(x,y)\equiv p$ for some $p\in(0,1)$, the resulting graph is the Erd{\H o}s-R\'enyi random graph, c.f. \cite{gilbert59,ER}. Another special case of random-connection model is so-called graphon based random graph, c.f. \cite{zhang22,bhattacharya23}, when the underlying point process is a Binomial point process $\xi_n$ on $[0,1]$ with a connection function, also known as a graphon, $W:[0,1]\times[0,1]\to[0,1]$.
 
 In a recent preprint \cite{LiuPrivault23}, normal approximation for the subgraph counts in the random-connection model with convergence rates under the Kolmogorov distance is established through an ingenious diagram language and combinatorial arguments. Through the analysis of cumulants under different limiting regimes, asymptotic normality of the subgraph counts is discovered in \cite{LiuPrivault23} for connected graph $G$ in a dilute regime and for $G$ being a tree in certain sparse regime. 
 
 In the present paper, we investigate the subgraph counts in random-connection model with and without fixed endpoints and give a full consideration for phase transition phenomenon corresponding to the asymptotic orders of cumulants. 
+
+The randon-connection model considered in this paper is defined as follows. For $\lambda > 0$, let $\Xi_\lambda$ be a Poisson point process on $\R^d$, $d\geq 1$, with diffuse $\sigma$-finite intensity measure $\Lambda_\lambda$. According to \cite[Corollary~6.5]{LastPenrose17}, $\Xi_\lambda$ can be almost surely written as 
+$$\Xi_\lambda=\sum_{n=1}^\tau\delta_{X_i},$$
+where $\tau$ is a $\N\cup\{\infty\}-$valued random variable, $\delta_x$ denotes the Dirac measure at $x\in\R^d$, and $X_1,X_2,\dots$ are random elements in $\R^d$. Let $m\in\N$, $y_1,\dots,y_m\in\R^d$, and $[m]:=\{1,\dots,m\}$. We define a point process $\Xi_{\lambda,m}$ on $\R^d$ by 
+$$\Xi_{\lambda,m}:=\sum_{n=1}^\tau\delta_{X_i}+\sum_{i\in[m]}\delta_{X_{-i}},$$
+where $X_{-i}:=y_i$ for $i\in [m]$. Note $\Xi_{\lambda,m}=\Xi_\lambda$ if $m=0$. Let $H:\R^d\times \R^d\to [0,1]$ be a symmetric measurable function, and also denote $H_\lambda:=c_\lambda\cdot H$, for some $c_\lambda\in(0,1)$. The random-connection model we considered in the present paper is a random graph with vertex set $\Xi_{\lambda,m}$, such that any two distinct vertices $x,y\in\Xi_{\lambda,m}$ are independently connected by an edge with probability $H_\lambda(x,y)$. The random-connection model is denoted by $G_{H_\lambda}(\Xi_{\lambda,m})$, and we say that $H_\lambda$ is the connection function of random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$.
+
+We next present some of our results on the random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$ when the intensity measure $\Lambda_\lambda$ is of the form $$\Lambda_\lambda=\lambda\cdot\mu,$$
+for some diffuse $\sigma$-finite measure $\mu$ on $\R^d$. 
+
+
+Let $G$ be a connected graph with $r+m$ vertices, $r\ge2$. 
+For the case when $m=0$, suppose that there exists a constant $\varepsilon>0$ such that 
+\begin{equation}
+  \int_{(\R^d)^{2r-1}}\left[\prod_{1\le i<j\le 2r-1}H(x_i,x_j)\right]\mu\{\rm{d}x_1\}\cdots\mu\{\rm{d}x_{2r-1}\}\ge \varepsilon^{2r-1}.
+\end{equation}
+For $m\ge1$, suppose there exists a constant $\varepsilon>0$ such that 
+\begin{equation}
+  \int_{(\R^d)^{2r-1}}\left[\prod_{1\le i<j\le 2r+m-1}H(x_i,x_j)\right]\mu\{\rm{d}x_1\}\cdots\mu\{\rm{d}x_{2r-1}\}\ge \varepsilon^{2r-1},
+\end{equation}
+where $x_{2r-1+j}:=y_j$ for $j\in[m]$.
+\begin{thm}
+  Let $G$
+\end{thm}
+
+
+
  
 
 \section{Preliminaries and notations}
-\noindent
-Let $\Xi$ be a Poisson point process on $\R^d$, $d\geq 1$, with intensity measure $\Lambda_\lambda$, where $\lambda > 0$. The random-connection model built on $\Xi$, denoted by $G_{H_\lambda}(\Xi )$, is a random graph in which any two distinct vertices $x,y\in\eta$ are independently connected by an edge with a probability $H(x,y)$ that depends only on the locations of $x$ and $y$, where $H:\R^d\times \R^d\to[0,1]$ is a symmetric measurable connection function. 
+\subsection*{Set partition and Diagrams}
+\noindent 
+
 \subsection*{Graph theory}
 \noindent
 In what follows, given any two graphs $G_1,G_2$
@@ -1535,7 +1563,7 @@ Using the first and the second method \eqref{firstsecm}, the result is rather di
 
 \section{Random Graph With fixed endpoints}
 \noindent
-Now we consider the count $N^G_{y_1,\dots,y_m}$ of subgraph with fixed endpoints $y_1,\dots,y_m$ in the RCM $G_H(\eta\cup\{y_1,\dots,y_m\})$. To be more self-contained, we first recall some notation from \cite{LiuPrivault2}.\footnote{The following highlighted part is purely imported from the existing engineering preprint.}
+Now we consider the count $N^G_{y_1,\dots,y_m}$ of subgraph with fixed endpoints $y_1,\dots,y_m$ in the RCM $G_{H_\lambda}(\Xi_{\lambda,m})$. To be more self-contained, we first recall some notation from \cite{LiuPrivault2}.\footnote{The following highlighted part is purely imported from the existing engineering preprint.}
 \textcolor{cyan}{
 Given $r\geq 2$ and $m\geq 1$, we 
 consider a connected graph $G=(V_G,E_G)$ with edge set $E_G$ and
