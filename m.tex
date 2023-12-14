@@ -343,29 +343,66 @@ where $\tau$ is a $\N\cup\{\infty\}-$valued random variable, $\delta_x$ denotes 
 $$\Xi_{\lambda,m}:=\sum_{n=1}^\tau\delta_{X_i}+\sum_{i\in[m]}\delta_{X_{-i}},$$
 where $X_{-i}:=y_i$ for $i\in [m]$. Note $\Xi_{\lambda,m}=\Xi_\lambda$ if $m=0$. Let $H:\R^d\times \R^d\to [0,1]$ be a symmetric measurable function, and also denote $H_\lambda:=c_\lambda\cdot H$, for some $c_\lambda\in(0,1)$. The random-connection model we considered in the present paper is a random graph with vertex set $\Xi_{\lambda,m}$, such that any two distinct vertices $x,y\in\Xi_{\lambda,m}$ are independently connected by an edge with probability $H_\lambda(x,y)$. The random-connection model is denoted by $G_{H_\lambda}(\Xi_{\lambda,m})$, and we say that $H_\lambda$ is the connection function of random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$.
 
-We next present some of our results on the random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$ when the intensity measure $\Lambda_\lambda$ is of the form $$\Lambda_\lambda=\lambda\cdot\mu,$$
+In this paper, we mainly consider the counts $N_G$ of subgraph in the random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$, which is isomorphic to a certain connected graph $G$ and meanwhile it contains some fixed endpoints as its vertices. The formal mathemcatical definition of $N_G$ is given in Section~\ref{prelim}. We next present some of our results on the random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$ when the intensity measure $\Lambda_\lambda$ is of the form $$\Lambda_\lambda=\lambda\cdot\mu,$$
 for some diffuse $\sigma$-finite measure $\mu$ on $\R^d$. 
 
+% Let $G$ be a connected graph with $r+m$ vertices, $r\ge2$. 
+% For the case when $m=0$, suppose that there exists a constant $\varepsilon>0$ such that 
+% \begin{equation}
+%   \int_{(\R^d)^{2r-1}}\left[\prod_{1\le i<j\le 2r-1}H(x_i,x_j)\right]\mu\{\mathrm{d}x_1\}\cdots\mu\{\mathrm{d}x_{2r-1}\}\ge \varepsilon^{2r-1}.
+% \end{equation}
 
-Let $G$ be a connected graph with $r+m$ vertices, $r\ge2$. 
-For the case when $m=0$, suppose that there exists a constant $\varepsilon>0$ such that 
-\begin{equation}
-  \int_{(\R^d)^{2r-1}}\left[\prod_{1\le i<j\le 2r-1}H(x_i,x_j)\right]\mu\{\rm{d}x_1\}\cdots\mu\{\rm{d}x_{2r-1}\}\ge \varepsilon^{2r-1}.
-\end{equation}
-For $m\ge1$, suppose there exists a constant $\varepsilon>0$ such that 
-\begin{equation}
-  \int_{(\R^d)^{2r-1}}\left[\prod_{1\le i<j\le 2r+m-1}H(x_i,x_j)\right]\mu\{\rm{d}x_1\}\cdots\mu\{\rm{d}x_{2r-1}\}\ge \varepsilon^{2r-1},
-\end{equation}
-where $x_{2r-1+j}:=y_j$ for $j\in[m]$.
-\begin{thm}
-  Let $G$
+\begin{thm}\label{thm-1}
+  Let $G$ be a connected $K_2$-balanced graph with $r+1$ vertices, $r\ge2$. Suppose there exists a constant $\varepsilon>0$ such that 
+  \begin{equation}
+    \int_{(\R^d)^{2r-1}}\left[\prod_{1\le i<j\le 2r}H(x_i,x_j)\right]\mu\{\mathrm{d}x_1\}\cdots\mu\{\mathrm{d}x_{2r-1}\}\ge \varepsilon^{2r-1},
+  \end{equation}
+  where $x_{2r}:=y_1$. Let $N_G$ be the count of subgraph on $G_{H_\lambda}(\Xi_{\lambda,1})$ which contains one fixed endpoint $y_1\in\R^d$. Taking $c_\lambda\to0$ as $\lambda\to\infty$, we have
+  \begin{eqnarray}
+    \kappa_n\big(N_G\big)=\left\{\begin{array}{ll}
+      \Theta\big(\lambda^{(r-1)n+1} c_\lambda^{(e(G)-1)n+1}\big) & \ \mbox{if }\ \lambda c_\lambda^{[e(G)-1]/(r-1)}\gg1,
+      \medskip
+      \\
+      \displaystyle
+\Theta\big(\lambda^{r}c_\lambda^{e(G)}\big) & \ \mbox{if }\ \lambda c_\lambda^{[e(G)-1]/(r-1)}\ll1,
+    \medskip
+    \\
+    \displaystyle
+    \Theta(\lambda c_\lambda) & \ \mbox{if }\ \lambda c_\lambda^{[e(G)-1]/(r-1)}\asymp1.
+    \end{array}
+    \right.
+  \end{eqnarray}
+  where $\kappa_n(N_G)$ stands for the $n$-th cumulant of $N_G$, for all $n\ge 1$, and $e(G)$ is the number of edges of graph $G$.
+\end{thm}
+
+\begin{thm}\label{thm-2}
+  Let $G$ be a strongly balanced and connected graph with $r$ vertices, $r\ge2$. Suppose there exists a constant $\varepsilon>0$ such that 
+  \begin{equation}
+    \int_{(\R^d)^{2r-1}}\left[\prod_{1\le i<j\le 2r-1}H(x_i,x_j)\right]\mu\{\mathrm{d}x_1\}\cdots\mu\{\mathrm{d}x_{2r-1}\}\ge \varepsilon^{2r-1}.
+  \end{equation}
+ Let $N_G$ be the count of subgraph on $G_{H_\lambda}(\Xi_{\lambda})$. Taking $c_\lambda\to0$ as $\lambda\to\infty$, we have
+  \begin{eqnarray}
+    \kappa_n\big(N_G\big)=\left\{\begin{array}{ll}
+      \Theta\big(\lambda^{(r-1)n+1} c_\lambda^{ne(G)}\big) & \ \mbox{if }\ \lambda c_\lambda^{e(G)/(r-1)}\gg1,
+      \medskip
+      \\
+      \displaystyle
+\Theta\big(\lambda^{r}c_\lambda^{e(G)}\big) & \ \mbox{if }\ \lambda c_\lambda^{e(G)/(r-1)}\ll1,
+    \medskip
+    \\
+    \displaystyle
+    \Theta(\lambda) & \ \mbox{if }\ \lambda c_\lambda^{e(G)/(r-1)}\asymp1.
+    \end{array}
+    \right.
+  \end{eqnarray}
+  where $\kappa_n(N_G)$ stands for the $n$-th cumulant of $N_G$, for all $n\ge 1$, and $e(G)$ is the number of edges of graph $G$.
 \end{thm}
 
 
 
  
 
-\section{Preliminaries and notations}
+\section{Preliminaries and notations}\label{prelim}
 \subsection*{Set partition and Diagrams}
 \noindent 
 
