@@ -333,7 +333,7 @@ A random-connection model (RCM) is a random graph whose vertex set is a point pr
 
 The random-connection model can be regarded as a generalisation of several classic random graph. For instance, when the connection function $H$ is given by an indicator function, of the form $\bone_{\{\|x-y\|\le r\}}$, for some $r>0$, the random-connection model becomes a random geometric graph, c.f. the monograph \cite{penrosebk}. When taking the underlying point process $\xi$ to be a Binomial point process $\xi_n$, meanwhile the connection function $H(x,y)\equiv p$ for some $p\in(0,1)$, the resulting graph is the Erd{\H o}s-R\'enyi random graph, c.f. \cite{gilbert59,ER}. Another special case of random-connection model is so-called graphon based random graph, c.f. \cite{zhang22,bhattacharya23}, when the underlying point process is a Binomial point process $\xi_n$ on $[0,1]$ with a connection function, also known as a graphon, $W:[0,1]\times[0,1]\to[0,1]$.
 
-In a recent preprint \cite{LiuPrivault23}, normal approximation for the subgraph counts in the random-connection model with convergence rates under the Kolmogorov distance is established through an ingenious diagram language and combinatorial arguments. Through the analysis of cumulants under different limiting regimes, asymptotic normality of the subgraph counts is discovered in \cite{LiuPrivault23} for connected graph $G$ in a dilute regime and for $G$ being a tree in certain sparse regime. 
+In a recent preprint \cite{LiuPrivault23a}, normal approximation for the subgraph counts in the random-connection model with convergence rates under the Kolmogorov distance is established through an ingenious diagram language and combinatorial arguments. Through the analysis of cumulants under different limiting regimes, asymptotic normality of the subgraph counts is discovered in \cite{LiuPrivault23a} for connected graph $G$ in a dilute regime and for $G$ being a tree in certain sparse regime. 
 
 In the present paper, we investigate the subgraph counts in random-connection model with and without fixed endpoints and give a full consideration for phase transition phenomenon corresponding to the asymptotic orders of cumulants. 
 
@@ -343,7 +343,7 @@ where $\tau$ is a $\N\cup\{\infty\}-$valued random variable, $\delta_x$ denotes 
 $$\Xi_{\lambda,m}:=\sum_{n=1}^\tau\delta_{X_i}+\sum_{i\in[m]}\delta_{X_{-i}},$$
 where $X_{-i}:=y_i$ for $i\in [m]$. Note $\Xi_{\lambda,m}=\Xi_\lambda$ if $m=0$. Let $H:\R^d\times \R^d\to [0,1]$ be a symmetric measurable function, and also denote $H_\lambda:=c_\lambda\cdot H$, for some $c_\lambda\in(0,1)$. The random-connection model we considered in the present paper is a random graph with vertex set $\Xi_{\lambda,m}$, such that any two distinct vertices $x,y\in\Xi_{\lambda,m}$ are independently connected by an edge with probability $H_\lambda(x,y)$. The random-connection model is denoted by $G_{H_\lambda}(\Xi_{\lambda,m})$, and we say that $H_\lambda$ is the connection function of random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$.
 
-In this paper, we mainly consider the counts $N_G$ of subgraph in the random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$, which is isomorphic to a certain connected graph $G$ and meanwhile it contains some fixed endpoints as its vertices. The formal mathemcatical definition of $N_G$ is given in Section~\ref{prelim}. We next present some of our results on the random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$ when the intensity measure $\Lambda_\lambda$ is of the form $$\Lambda_\lambda=\lambda\cdot\mu,$$
+In this paper, we mainly consider the counts $N_G$ of subgraph in the random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$, which is isomorphic to a certain connected graph $G$ and meanwhile it contains some fixed endpoints as its vertices. The formal mathemcatical definition of $N_G$ is given in Section~\ref{prelim}., and the definition for strongly balanced grapn and $K_2$-balanced graph is given in Definition~\ref{balgra}. We next present some of our results on the random-connection model $G_{H_\lambda}(\Xi_{\lambda,m})$ when the intensity measure $\Lambda_\lambda$ is of the form $$\Lambda_\lambda=\lambda\cdot\mu,$$
 for some diffuse $\sigma$-finite measure $\mu$ on $\R^d$. 
 
 % Let $G$ be a connected graph with $r+m$ vertices, $r\ge2$. 
@@ -368,7 +368,7 @@ for some diffuse $\sigma$-finite measure $\mu$ on $\R^d$.
     \medskip
     \\
     \displaystyle
-    \Theta(\lambda c_\lambda) & \ \mbox{if }\ \lambda c_\lambda^{[e(G)-1]/(r-1)}\asymp1.
+    \Theta(\lambda c_\lambda) & \ \mbox{if }\ \lambda c_\lambda^{[e(G)-1]/(r-1)}\asymp1,
     \end{array}
     \right.
   \end{eqnarray}
@@ -395,7 +395,7 @@ for some diffuse $\sigma$-finite measure $\mu$ on $\R^d$.
     \end{array}
     \right.
   \end{eqnarray}
-  where $\kappa_n(N_G)$ stands for the $n$-th cumulant of $N_G$, for all $n\ge 1$, and $e(G)$ is the number of edges of graph $G$.
+  % where $\kappa_n(N_G)$ stands for the $n$-th cumulant of $N_G$, for all $n\ge 1$, and $e(G)$ is the number of edges of graph $G$.
 \end{thm}
 
 
@@ -405,23 +405,143 @@ for some diffuse $\sigma$-finite measure $\mu$ on $\R^d$.
 \section{Preliminaries and notations}\label{prelim}
 \subsection*{Set partition and Diagrams}
 \noindent 
+We first recall certain notations from \cite{LiuPrivault23a,peccati2011}. For any finite set $b$, let $\Pi(b)$ denote the collection of set partitions of $b$. For two set partitions $\rho_1,\rho_2\in\Pi(b)$, we say $\rho_1$ is coarser than $\rho_2$ if and only if each block of $\rho_2$ is contained in a block of $\rho_1$, and we write it as $\rho_2\preceq\rho_1$. Equivalently, we can say $\rho_2$ is finer than $\rho_1$. We use $\rho_1\vee\rho_2$ for the most finer set partition that is coarser than both $\rho_1$ and $\rho_2$, and also denote $\rho_1\wedge\rho_2$ the most coarse partition that is finer than both of $\rho_1$ and $\rho_2$. We also denote two trivial partitions in $\Pi(b)$. One is the most coarse partition of $b$, 
+$$\widehat{1}:=\{b\},$$
+and $\widehat{0}$ stands for the partition that each block only contains exactly one element of $b$. Let $r\ge2$ be a fixed integer, and $n\ge1$. In the sequel, We reserve $\pi$ for a particular set partition of $[n]\times[r]$ with $\pi:=\{\pi_1,\dots,\pi_n\}\in\Pi([n]\times[r])$ where 
+$$\pi_i:=\{(i,j):1\le j\le r\}.$$
+For any $\rho\in\Pi([n]\times[r])$, it is said to be {\it non-flat} if $\rho\wedge\pi=\widehat{0}$, and {\it connected} if $\rho\vee\pi=\widehat{1}$. Let $\Pi_{\widehat{1}}([n]\times[r])$ be the collection of all connected partitions of $[n]\times[r]$. 
+
+In \cite{LiuPrivault23a}, a graphical diagram language is designed for the cumulant representation of subgraph count in the random-connection model. Using graphical language for cumulant and moment representations is a common practice in this field. \cite{khorunzhiy08} gives a diagram representation for lines and cycles on the Erd{\H o}s-R\'enyi model. In \cite{FGY23}, a graphical representation is defined for the $U$-statistics of determinantal point process. For more discussions around cumulants and diagrams, we refer the monograph \cite{peccati2011}.
+
+Here, we exploit the diagram language in \cite{LiuPrivault23a} and extend to the case that serves the count of subgraph which contains certain fixed endpoints. This diagram language also appear in \cite{LiuPri23b}. To be self-contained, we adapt it as follows.  
+\begin{definition}
+  Fix $r\ge2$, and $n\ge1$. Let $\rho=\{b_1,\dots,b_\ell\}$ be an arbitray set partition in $\Pi([n]\times[r])$, with $\ell\ge1$. Let $G$ be a connected graph with $r+m$ vertices. We denote $V(G):=[r+m]$ and $E(G)\subseteq[r+m]\times[r+m]$ for the vertex set and edge set of graph $G$.
+  \begin{enumerate}
+    \item when $m=0$: $\rho_G$ is a connected graph with vertex set $V(\rho_G)=[\ell]$ such that $(i,j)\in E(\rho_G)$ if and only if $\exists ~k\in[n]$ such that $(k,t)\in b_i$ and $(k,s)\in b_j$ for some $(t,s)\in E(G)$, and there is at most one edge between any pair of vertices.
+    \item when $m\ge1$: $\rho_G$ is a connected graph with vertex set $V(\rho_G)=[\ell+m]$ such that $(i,j)\in E(\rho_G)$ if and only if either of the following holds:
+    \begin{enumerate}
+      \item when $(i,j)\in[\ell]\times[\ell]$, $\exists ~k\in[n]$ such that $(k,t)\in b_i$ and $(k,s)\in b_j$ for some $(t,s)\in[r]\times[r]$ and $(t,s)\in E(G)$;
+      \item when $i\in[\ell]$ and $\ell+1\le j\le \ell +m$, $\exists ~(k,t)\in b_i$ such that $(t,r+j-\ell)\in E(G)$.
+    \end{enumerate}
+    And there is at most one edge between any pair of vertices of $\rho_G$.
+  \end{enumerate}
+\end{definition}
+\begin{example}
+  Take $\rho\in\Pi([3]\times[4])$ as follows
+  \begin{eqnarray*}
+    \rho&=&\{\{(1,1),(2,1),(3,1)\},
+    \{(1,2),(2,4)\},\{(1,3),(2,3)\},\\
+    &&\ \ \ \{(1,4)\},\{(2,2),(3,2)\},\{(3,3)\},\{(3,4)\}\},
+  \end{eqnarray*}
+  and $G_1$, $G_2$ are two connected graph with $V(G_1)=[4]$ and $V(G_2)=[5]$.
+  Figure~\ref{fig:diagram0}-$a)$ presents an example of a non-connected partition diagram  
+$\Gamma ( \rho , \pi)$,
+and Figure~\ref{fig:diagram0}-$b)$ presents an example of a connected partition diagram $\Gamma ( \sigma , \pi)$. 
+
+% \vspace{-0.3cm}
+
+\begin{figure}[H]
+\captionsetup[subfigure]{font=footnotesize}
+\centering
+\subcaptionbox{Non-connected partition diagram $\Gamma(\rho,\pi)$.}[.5\textwidth]{%
+\begin{tikzpicture}[scale=0.9] 
+\draw[black, thick] (0,0) rectangle (5,4);
+\node[anchor=east,font=\small] at (0.8,3) {1};
+\node[anchor=east,font=\small] at (0.8,2) {2};
+\node[anchor=east,font=\small] at (0.8,1) {3};
+
+\node[anchor=south,font=\small] at (1,0) {1};
+\node[anchor=south,font=\small] at (2,0) {2};
+\node[anchor=south,font=\small] at (3,0) {3};
+\node[anchor=south,font=\small] at (4,0) {4};
+
+\filldraw [gray] (1,1) circle (2pt);
+\filldraw [gray] (2,1) circle (2pt);
+\filldraw [gray] (3,1) circle (2pt);
+\filldraw [gray] (4,1) circle (2pt);
+\filldraw [gray] (1,2) circle (2pt);
+\filldraw [gray] (2,2) circle (2pt);
+\filldraw [gray] (3,2) circle (2pt);
+\filldraw [gray] (4,2) circle (2pt);
+\filldraw [gray] (1,3) circle (2pt);
+\filldraw [gray] (2,3) circle (2pt);
+\filldraw [gray] (3,3) circle (2pt);
+\filldraw [gray] (4,3) circle (2pt);
+
+\draw[very thick] (1,3) -- (1,2) -- (1,1);
+\draw[very thick] (2,3) -- (4,2);
+\draw[very thick] (3,3) -- (3,2);
+\draw[very thick] (2,2) -- (2,1);
+
+\end{tikzpicture}}%
+\subcaptionbox{Connected partition diagram $\Gamma(\sigma,\pi)$.}[.5\textwidth]{
+\begin{tikzpicture}[scale=0.9] 
+\draw[black, thick] (0,0) rectangle (5,6);
+
+\node[anchor=east,font=\small] at (0.8,5) {2};
+\node[anchor=east,font=\small] at (0.8,4) {3};
+\node[anchor=east,font=\small] at (0.8,3) {5};
+\node[anchor=east,font=\small] at (0.8,2) {8};
+\node[anchor=east,font=\small] at (0.8,1) {10};
+
+\node[anchor=south,font=\small] at (1,0) {1};
+\node[anchor=south,font=\small] at (2,0) {2};
+\node[anchor=south,font=\small] at (3,0) {3};
+\node[anchor=south,font=\small] at (4,0) {4};
+
+\filldraw [gray] (1,1) circle (2pt);
+\filldraw [gray] (2,1) circle (2pt);
+\filldraw [gray] (3,1) circle (2pt);
+\filldraw [gray] (4,1) circle (2pt);
+\filldraw [gray] (1,2) circle (2pt);
+\filldraw [gray] (2,2) circle (2pt);
+\filldraw [gray] (3,2) circle (2pt);
+\filldraw [gray] (4,2) circle (2pt);
+\filldraw [gray] (1,3) circle (2pt);
+\filldraw [gray] (2,3) circle (2pt);
+\filldraw [gray] (3,3) circle (2pt);
+\filldraw [gray] (4,3) circle (2pt);
+\filldraw [gray] (2,3) circle (2pt);
+\filldraw [gray] (1,4) circle (2pt);
+\filldraw [gray] (2,4) circle (2pt);
+\filldraw [gray] (3,4) circle (2pt);
+\filldraw [gray] (4,4) circle (2pt);
+\filldraw [gray] (1,5) circle (2pt);
+\filldraw [gray] (2,5) circle (2pt);
+\filldraw [gray] (3,5) circle (2pt);
+\filldraw [gray] (4,5) circle (2pt);
+
+\draw[very thick] (1,5) -- (1,4); 
+\draw[very thick] (3,5) -- (4,4);
+
+\draw[very thick] (1,2) -- (1,1);
+\draw[very thick] (2,2) -- (2,4);
+\draw[very thick] (2,1) -- (3,2) -- (4,3) -- (3,4);
+
+\end{tikzpicture}}%
+\caption{Two examples of partition diagrams with $\eta = \{2,3,5,8,10\}$, $n=10$, $r=4$.}
+\label{fig:diagram0}
+\end{figure}
+
+\end{example}
+
 
 \subsection*{Graph theory}
 \noindent
 In what follows, given any two graphs $G_1,G_2$
 we write $G_1\simeq G_2$ when $G_1$ is isomorphic to $G_2$. 
 We also let $v(H):=|V(H)|$ and $e(H):=|E(H)|$ be the number of vertices and the number of edges of a graph $H$.
-Throughout this note, $G$ is assumed to be a connected graph with $ r = v(G)$ vertices. %  and $e(G)=k$.
-We denote by 
+%Throughout this note, $G$ is assumed to be a connected graph with $ r = v(G)$ vertices. %  and $e(G)=k$.
+\textcolor{cyan}{We denote by 
 $$
 {\rm CNF}_G(n,r) :=\big\{ \rho_G \ : \ \rho\in\Pi_{\widehat{1}}( [n]\times [r]),
  \ 
  \rho\wedge\pi=\widehat{0}\big\}
 $$
 the set of connected graphs whose vertex sets are non-flat partitions of
- $[n]\times [r]$, $n, r\geq 1$. 
+ $[n]\times [r]$, $n, r\geq 1$.}
  Next, we recall some related concepts from random graph theory, see \cite{luczakrucinski92,JLR11}.  
-\begin{definition} \cite[pages~64-65]{JLR11}
+\begin{definition} \cite[pages~64-65]{JLR11}\label{balgra}
   \begin{enumerate}[1)]
     \item
     A graph $G$ is balanced if 
@@ -1748,7 +1868,7 @@ In the sequel we make the following assumption on measurable and symmetric
 0<\kappa_H:=\int_{\R^d}H(x)\mathrm{d}x<\infty.
 \end{equation}
 \end{assumption}
-It has been shown in \cite{LiuPrivault23} that the Rayleigh connection function $H(x,y):=e^{-\beta\|x-y\|^2}$, for some $\beta>0$, satisfies Assumption~\ref{measurability1}. 
+It has been shown in \cite{LiuPrivault23a} that the Rayleigh connection function $H(x,y):=e^{-\beta\|x-y\|^2}$, for some $\beta>0$, satisfies Assumption~\ref{measurability1}. 
  In this section, we replace $H(x,y)$ with
 $$
 H_\lambda (x,y) : = c_\lambda H(x,y),
